@@ -25,12 +25,10 @@ const refine = `
 .truck-svg{filter:drop-shadow(0 34px 36px rgba(0,0,0,.48)) drop-shadow(0 0 1px rgba(255,255,255,.12))!important}
 .truck-glow{left:11%!important;right:0!important;bottom:5%!important;height:118px!important;background:radial-gradient(ellipse,rgba(249,115,22,.22),rgba(30,76,135,.13) 44%,transparent 72%)!important;filter:blur(25px)!important}
 
-/* trilhas: mais finas e elegantes */
 .hero::after{inset:auto -18% 1.5% 32%!important;height:165px!important;background:
   linear-gradient(174deg,transparent 43%,rgba(249,115,22,.05) 44%,rgba(249,115,22,.65) 45%,rgba(255,202,148,.82) 45.6%,rgba(249,115,22,.19) 47%,transparent 49%),
   linear-gradient(178deg,transparent 54%,rgba(249,115,22,.38) 55%,rgba(249,115,22,.08) 56%,transparent 57%)!important;opacity:.82!important}
 
-/* proteção: menos "escudo gamer", mais película sobre a carroceria */
 .protection-shell{left:7%!important;top:8%!important;width:88%!important;height:78%!important;border:1px solid rgba(249,115,22,.22)!important;box-shadow:0 0 20px rgba(249,115,22,.08),inset 0 0 26px rgba(249,115,22,.045)!important;opacity:.48!important;transform:rotate(-2deg)!important}
 .protection-shell::before{background-size:42px 26px!important;opacity:.22!important}
 .protection-sweep{top:9%!important;bottom:12%!important;width:18%!important;filter:blur(10px)!important;background:linear-gradient(90deg,transparent,rgba(249,115,22,.03) 16%,rgba(249,115,22,.18) 46%,rgba(255,199,140,.34) 56%,rgba(249,115,22,.07) 76%,transparent)!important;animation-duration:6.4s!important}
@@ -46,14 +44,24 @@ const refine = `
   .protection-shell{left:8%!important;top:8%!important;width:86%!important;height:78%!important}
 }
 @media(max-width:620px){
-  .hero-inner{padding:38px 0 24px!important}
-  .hero h1{font-size:clamp(36px,11.5vw,48px)!important;line-height:1.06!important}
-  .hero-copy p{font-size:15px!important;line-height:1.7!important}
-  .truck-hero{min-height:330px!important;margin:8px -20vw -2px -17vw!important}
-  .truck-stage{width:600px!important;max-width:132vw!important;height:340px!important;transform:none!important}
+  .hero-inner{display:grid!important;grid-template-columns:1fr!important;align-items:start!important;min-height:auto!important;gap:0!important;padding:26px 0 28px!important}
+  .hero-copy{padding-right:0!important;width:100%!important;max-width:none!important}
+  .hero h1{font-size:clamp(34px,10.2vw,42px)!important;line-height:1.04!important;letter-spacing:-.03em!important;margin-top:0!important;max-width:100%!important}
+  .hero-copy p{font-size:15px!important;line-height:1.65!important;margin-top:20px!important;max-width:100%!important}
+  .hero-actions{margin-top:24px!important;gap:12px!important}
+  .hero-actions .btn{width:100%!important;min-height:54px!important;padding:14px 18px!important}
+  .truck-hero{position:relative!important;min-height:250px!important;margin:18px 0 0!important;width:100%!important;justify-content:center!important;overflow:visible!important}
+  .truck-stage{position:relative!important;width:100%!important;max-width:100%!important;height:250px!important;transform:none!important}
   .protection-shell{left:11%!important;top:10%!important;width:80%!important;height:73%!important;opacity:.38!important}
   .protection-sweep{width:16%!important;animation-duration:7.2s!important}
-  .hero::after{height:90px!important;opacity:.6!important}
+  .hero::after{inset:auto -14% 0 8%!important;height:74px!important;opacity:.5!important}
+}
+@media(max-width:390px){
+  .hero-inner{padding-top:22px!important}
+  .hero h1{font-size:34px!important}
+  .hero-copy p{font-size:14.5px!important}
+  .truck-hero{min-height:225px!important;margin-top:14px!important}
+  .truck-stage{height:225px!important}
 }
 </style>`;
 
