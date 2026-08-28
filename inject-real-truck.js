@@ -43,22 +43,65 @@ if (!svgRegex.test(html)) {
 }
 html = html.replace(
   svgRegex,
-  '<img class="truck-real" src="/truck-real.webp" alt="Carreta protegida pelo Grupo Nogueira" decoding="async" fetchpriority="high">'
+  '<img class="truck-real" src="/truck-real.webp" alt="Carreta protegida pelo Grupo Nogueira" decoding="async" fetchpriority="high"><img class="truck-protection-pass" src="/truck-real.webp" alt="" aria-hidden="true" decoding="async">'
 );
 
 const realTruckStyles = `
 <style id="real-truck-stage">
-/* ETAPA 4C — asset real íntegro e verificado */
+/* ETAPA 4D — película presa aos pixels reais da carreta */
 .truck-stage{width:850px;max-width:70vw;height:555px;transform:translateY(8px)}
-.truck-real{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;object-position:center 56%;z-index:2;filter:drop-shadow(0 30px 32px rgba(0,0,0,.48)) drop-shadow(0 0 18px rgba(68,119,190,.08))}
+.truck-real,.truck-protection-pass{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;object-position:center 56%}
+.truck-real{z-index:2;filter:drop-shadow(0 30px 32px rgba(0,0,0,.48)) drop-shadow(0 0 18px rgba(68,119,190,.08))}
 .protection-shell,.protection-sweep{display:none!important}
 .truck-glow{left:12%;right:2%;bottom:7%;height:105px;background:radial-gradient(ellipse,rgba(249,115,22,.24),rgba(29,75,136,.14) 48%,transparent 74%);filter:blur(22px)}
-.truck-stage::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(112deg,transparent 0 33%,rgba(249,115,22,.03) 39%,rgba(249,115,22,.18) 46%,rgba(255,197,139,.48) 50%,rgba(249,115,22,.22) 54%,rgba(249,115,22,.05) 61%,transparent 68% 100%);background-size:230% 100%;background-position:180% 0;-webkit-mask-image:url('/truck-real.webp');mask-image:url('/truck-real.webp');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center 56%;mask-position:center 56%;filter:drop-shadow(0 0 12px rgba(249,115,22,.24));mix-blend-mode:screen;opacity:0;animation:realProtectionSweep 6.4s cubic-bezier(.45,.02,.2,1) infinite}
-@keyframes realProtectionSweep{0%,12%{background-position:180% 0;opacity:0}18%{opacity:.72}52%{opacity:.92}72%{background-position:-80% 0;opacity:.32}78%,100%{background-position:-80% 0;opacity:0}}
+
+/* A própria imagem transparente da carreta é a película. Assim não existe efeito fora da silhueta. */
+.truck-protection-pass{
+  z-index:4;
+  pointer-events:none;
+  opacity:0;
+  mix-blend-mode:screen;
+  filter:sepia(1) saturate(7) hue-rotate(338deg) brightness(1.22) contrast(1.03);
+  -webkit-mask-image:linear-gradient(96deg,transparent 0 37%,rgba(0,0,0,.16) 42%,rgba(0,0,0,.9) 48%,#000 50%,rgba(0,0,0,.72) 53%,rgba(0,0,0,.12) 59%,transparent 64% 100%);
+  mask-image:linear-gradient(96deg,transparent 0 37%,rgba(0,0,0,.16) 42%,rgba(0,0,0,.9) 48%,#000 50%,rgba(0,0,0,.72) 53%,rgba(0,0,0,.12) 59%,transparent 64% 100%);
+  -webkit-mask-size:285% 100%;
+  mask-size:285% 100%;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+  -webkit-mask-position:145% 0;
+  mask-position:145% 0;
+  animation:truckPixelSweep 6.4s cubic-bezier(.45,.02,.2,1) infinite;
+}
+
+/* desliga a máscara anterior, que podia criar halo fora do veículo */
+.truck-stage::after{content:none!important;display:none!important}
+
+@keyframes truckPixelSweep{
+  0%,12%{-webkit-mask-position:145% 0;mask-position:145% 0;opacity:0}
+  17%{opacity:.16}
+  24%{opacity:.48}
+  52%{opacity:.62}
+  68%{opacity:.38}
+  77%{-webkit-mask-position:-55% 0;mask-position:-55% 0;opacity:.08}
+  82%,100%{-webkit-mask-position:-55% 0;mask-position:-55% 0;opacity:0}
+}
+
 .hero::after{opacity:.72}
-@media(max-width:1080px){.truck-stage{width:790px;max-width:98vw;height:500px;transform:none}.truck-real{object-position:center center}.truck-stage::after{-webkit-mask-position:center center;mask-position:center center}.truck-hero{margin:14px -7vw -24px -3vw}}
-@media(max-width:620px){.truck-hero{min-height:330px;margin:12px -19vw -8px -15vw}.truck-stage{width:620px;max-width:130vw;height:345px}.truck-real{object-position:center center}.truck-stage::after{-webkit-mask-position:center center;mask-position:center center;animation-duration:7s}.truck-glow{left:18%;right:8%;bottom:4%;height:70px}}
-@media(prefers-reduced-motion:reduce){.truck-stage::after{animation:none;opacity:.12;background-position:50% 0}}
+@media(max-width:1080px){
+  .truck-stage{width:790px;max-width:98vw;height:500px;transform:none}
+  .truck-real,.truck-protection-pass{object-position:center center}
+  .truck-hero{margin:14px -7vw -24px -3vw}
+}
+@media(max-width:620px){
+  .truck-hero{min-height:330px;margin:12px -19vw -8px -15vw}
+  .truck-stage{width:620px;max-width:130vw;height:345px}
+  .truck-real,.truck-protection-pass{object-position:center center}
+  .truck-protection-pass{animation-duration:7s;-webkit-mask-size:300% 100%;mask-size:300% 100%}
+  .truck-glow{left:18%;right:8%;bottom:4%;height:70px}
+}
+@media(prefers-reduced-motion:reduce){
+  .truck-protection-pass{animation:none;opacity:.12;-webkit-mask-position:50% 0;mask-position:50% 0}
+}
 </style>`;
 
 html = html.replace('</head>', realTruckStyles + '\n</head>');
