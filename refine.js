@@ -36,7 +36,7 @@ const refine = `
 .protection-sweep{top:9%!important;bottom:12%!important;width:18%!important;filter:blur(10px)!important;background:linear-gradient(90deg,transparent,rgba(249,115,22,.03) 16%,rgba(249,115,22,.18) 46%,rgba(255,199,140,.34) 56%,rgba(249,115,22,.07) 76%,transparent)!important;animation-duration:6.4s!important}
 .protection-sweep::after{left:56%!important;width:1px!important;background:linear-gradient(transparent,rgba(255,213,169,.72) 25%,rgba(249,115,22,.76) 55%,transparent 90%)!important;box-shadow:0 0 12px 3px rgba(249,115,22,.24)!important}
 
-.hero-points{left:8%!important;right:1%!important;bottom:1%!important;gap:26px!important;color:#cbd6e3!important;font-size:11.5px!important;opacity:.84!important}
+.hero-points{display:none!important}
 .hero-point i{width:6px!important;height:6px!important;box-shadow:0 0 8px rgba(249,115,22,.45)!important}
 
 @media(max-width:1080px){
