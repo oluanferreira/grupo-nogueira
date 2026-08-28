@@ -74,7 +74,7 @@ a{text-decoration:none;color:inherit}
 </head>
 <body>
 <header class="exact-head" id="inicio" aria-label="Grupo Nogueira">
-  <img src="head-reference.webp" alt="Grupo Nogueira — proteção veicular, assistência 24h e clube de benefícios">
+  <img id="gn-head-img" alt="Grupo Nogueira — proteção veicular, assistência 24h e clube de benefícios">
   <a class="hotspot hs-home" href="#inicio" aria-label="Início"></a>
   <a class="hotspot hs-protecao" href="#protecao" aria-label="Proteção Veicular"></a>
   <a class="hotspot hs-beneficios" href="#beneficios" aria-label="Clube de Benefícios"></a>
@@ -134,5 +134,19 @@ a{text-decoration:none;color:inherit}
   <div class="copyright"><span>© 2026 Grupo Nogueira Corretora de Seguros. Todos os direitos reservados.</span><span>Desenvolvido por i5x</span></div>
 </div>
 </footer>
+<script src="headpart1.js"></script>
+<script src="headpart2.js"></script>
+<script src="headpart3.js"></script>
+<script src="headpart4.js"></script>
+<script src="headpart5.js"></script>
+<script src="headpart6.js"></script>
+<script src="headpart7.js"></script>
+<script>
+(function(){
+  var img=document.getElementById('gn-head-img');
+  img.src='data:image/webp;base64,'+(window.__GN_HEAD||[]).join('');
+  window.__GN_HEAD=null;
+})();
+</script>
 </body>
 </html>
