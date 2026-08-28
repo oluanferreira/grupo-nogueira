@@ -1,1 +1,1 @@
-{"cleanUrls":true,"trailingSlash":false,"buildCommand":"node build.js && node refine.js","outputDirectory":"dist"}
+{"cleanUrls":true,"trailingSlash":false,"buildCommand":"node build.js && node refine.js && node inject-real-truck.js","outputDirectory":"dist"}
