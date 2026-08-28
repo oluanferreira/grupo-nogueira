@@ -55,7 +55,6 @@ const realTruckStyles = `
 .protection-shell,.protection-sweep{display:none!important}
 .truck-glow{left:12%;right:2%;bottom:7%;height:105px;background:radial-gradient(ellipse,rgba(249,115,22,.24),rgba(29,75,136,.14) 48%,transparent 74%);filter:blur(22px)}
 
-/* A própria imagem transparente da carreta é a película. Assim não existe efeito fora da silhueta. */
 .truck-protection-pass{
   z-index:4;
   pointer-events:none;
@@ -93,30 +92,30 @@ const realTruckStyles = `
   .truck-hero{margin:14px -7vw -24px -3vw}
 }
 
-/* ETAPA MOBILE — mantém o desktop intacto e recompõe a hero para telas pequenas */
+/* Mobile: leitura primeiro; carreta inteira abaixo dos CTAs */
 @media(max-width:620px){
-  .hero-inner{padding:30px 0 18px!important;gap:10px!important}
-  .hero-copy{padding-right:0!important;max-width:100%!important}
-  .hero h1{font-size:clamp(34px,10.4vw,44px)!important;line-height:1.045!important;letter-spacing:-.025em!important;max-width:100%!important}
-  .hero-copy p{font-size:14.5px!important;line-height:1.62!important;margin-top:18px!important;max-width:100%!important}
-  .hero-actions{margin-top:22px!important;gap:10px!important}
-  .hero-actions .btn{width:100%!important;min-height:50px!important;padding:14px 18px!important}
+  .hero-inner{display:grid!important;grid-template-columns:1fr!important;align-items:start!important;min-height:auto!important;padding:26px 0 28px!important;gap:0!important}
+  .hero-copy{padding-right:0!important;max-width:100%!important;width:100%!important}
+  .hero h1{font-size:clamp(34px,10.2vw,42px)!important;line-height:1.04!important;letter-spacing:-.03em!important;max-width:100%!important;margin-top:0!important}
+  .hero-copy p{font-size:15px!important;line-height:1.65!important;margin-top:20px!important;max-width:100%!important}
+  .hero-actions{margin-top:24px!important;gap:12px!important}
+  .hero-actions .btn{width:100%!important;min-height:54px!important;padding:14px 18px!important}
 
-  .truck-hero{min-height:286px!important;margin:2px -13vw -12px -10vw!important;justify-content:center!important;overflow:visible!important}
-  .truck-stage{width:520px!important;max-width:118vw!important;height:292px!important;transform:none!important}
-  .truck-real,.truck-protection-pass{object-position:center center!important}
-  .truck-real{filter:drop-shadow(0 22px 24px rgba(0,0,0,.42)) drop-shadow(0 0 12px rgba(68,119,190,.06))}
+  .truck-hero{position:relative!important;min-height:250px!important;margin:18px 0 0!important;width:100%!important;max-width:100%!important;justify-content:center!important;overflow:visible!important}
+  .truck-stage{position:relative!important;width:100%!important;max-width:100%!important;height:250px!important;transform:none!important}
+  .truck-real,.truck-protection-pass{object-fit:contain!important;object-position:center center!important}
+  .truck-real{filter:drop-shadow(0 20px 22px rgba(0,0,0,.40)) drop-shadow(0 0 10px rgba(68,119,190,.05))}
   .truck-protection-pass{animation-duration:7s;-webkit-mask-size:300% 100%;mask-size:300% 100%}
-  .truck-glow{left:16%!important;right:9%!important;bottom:3%!important;height:58px!important;filter:blur(18px)!important}
-  .hero::after{inset:auto -28% 0 8%!important;height:72px!important;opacity:.42!important}
+  .truck-glow{left:16%!important;right:16%!important;bottom:2%!important;height:52px!important;filter:blur(16px)!important}
+  .hero::after{inset:auto -14% 0 8%!important;height:74px!important;opacity:.5!important}
 }
 
 @media(max-width:390px){
-  .hero-inner{padding-top:26px!important}
-  .hero h1{font-size:clamp(32px,9.8vw,39px)!important}
-  .hero-copy p{font-size:14px!important}
-  .truck-hero{min-height:262px!important;margin:0 -11vw -10px -9vw!important}
-  .truck-stage{width:470px!important;max-width:116vw!important;height:265px!important}
+  .hero-inner{padding-top:22px!important}
+  .hero h1{font-size:34px!important}
+  .hero-copy p{font-size:14.5px!important}
+  .truck-hero{min-height:225px!important;margin-top:14px!important}
+  .truck-stage{height:225px!important}
 }
 
 @media(prefers-reduced-motion:reduce){
