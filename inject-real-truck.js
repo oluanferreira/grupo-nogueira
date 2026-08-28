@@ -5,7 +5,7 @@ const crypto = require('crypto');
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
 const chunksDir = path.join(ROOT, 'assets', 'truck-final');
-const chunkNames = ['01a.txt','01b.txt','02.txt','03.txt','04a.txt','04b.txt','05.txt','06.txt','07.txt','08.txt'];
+const chunkNames = ['01a.txt','01b.txt','02.txt','03a.txt','03b.txt','04a.txt','04b.txt','05a.txt','05b.txt','06.txt','07.txt','08.txt'];
 
 const b64 = chunkNames
   .map(name => fs.readFileSync(path.join(chunksDir, name), 'utf8'))
