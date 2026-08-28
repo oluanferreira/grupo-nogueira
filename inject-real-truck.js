@@ -4,26 +4,33 @@ const crypto = require('crypto');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
-const chunksDir = path.join(ROOT, 'assets', 'truck-chunks');
-const chunkNames = Array.from({ length: 16 }, (_, i) => String(i + 1).padStart(2, '0') + '.txt');
+const chunksDir = path.join(ROOT, 'assets', 'truck-final');
+const chunkNames = Array.from({ length: 8 }, (_, i) => String(i + 1).padStart(2, '0') + '.txt');
 
 const b64 = chunkNames
   .map(name => fs.readFileSync(path.join(chunksDir, name), 'utf8'))
   .join('')
   .replace(/\s+/g, '');
 
-if (b64.length !== 45776) {
-  throw new Error(`Truck base64 length mismatch: ${b64.length} (expected 45776)`);
+const EXPECTED_B64_LENGTH = 74356;
+const EXPECTED_BINARY_LENGTH = 55766;
+const EXPECTED_SHA256 = 'eb27012f2f9972bb934f7ca43cebf105713f54b5e4904eeffe27994c65264a31';
+
+if (b64.length !== EXPECTED_B64_LENGTH) {
+  throw new Error(`Truck base64 length mismatch: ${b64.length} (expected ${EXPECTED_B64_LENGTH})`);
 }
 
 const truckBuffer = Buffer.from(b64, 'base64');
-if (truckBuffer.length !== 34330) {
-  throw new Error(`Truck binary length mismatch: ${truckBuffer.length} (expected 34330)`);
+if (truckBuffer.length !== EXPECTED_BINARY_LENGTH) {
+  throw new Error(`Truck binary length mismatch: ${truckBuffer.length} (expected ${EXPECTED_BINARY_LENGTH})`);
 }
 if (truckBuffer.toString('ascii', 0, 4) !== 'RIFF' || truckBuffer.toString('ascii', 8, 12) !== 'WEBP') {
   throw new Error('Truck asset is not a valid WebP container');
 }
 const sha = crypto.createHash('sha256').update(truckBuffer).digest('hex');
+if (sha !== EXPECTED_SHA256) {
+  throw new Error(`Truck sha256 mismatch: ${sha} (expected ${EXPECTED_SHA256})`);
+}
 
 fs.writeFileSync(path.join(DIST, 'truck-real.webp'), truckBuffer);
 
@@ -41,7 +48,7 @@ html = html.replace(
 
 const realTruckStyles = `
 <style id="real-truck-stage">
-/* ETAPA 4B — usa a carreta real editada, sem redesenhar o veículo */
+/* ETAPA 4C — asset real íntegro e verificado */
 .truck-stage{width:850px;max-width:70vw;height:555px;transform:translateY(8px)}
 .truck-real{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;object-position:center 56%;z-index:2;filter:drop-shadow(0 30px 32px rgba(0,0,0,.48)) drop-shadow(0 0 18px rgba(68,119,190,.08))}
 .protection-shell,.protection-sweep{display:none!important}
@@ -56,4 +63,4 @@ const realTruckStyles = `
 
 html = html.replace('</head>', realTruckStyles + '\n</head>');
 fs.writeFileSync(indexPath, html, 'utf8');
-console.log('Real truck asset injected:', truckBuffer.length, 'bytes', sha);
+console.log('Verified real truck asset injected:', truckBuffer.length, 'bytes', sha);
