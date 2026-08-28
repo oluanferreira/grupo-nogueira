@@ -73,7 +73,6 @@ const realTruckStyles = `
   animation:truckPixelSweep 6.4s cubic-bezier(.45,.02,.2,1) infinite;
 }
 
-/* desliga a máscara anterior, que podia criar halo fora do veículo */
 .truck-stage::after{content:none!important;display:none!important}
 
 @keyframes truckPixelSweep{
@@ -87,18 +86,39 @@ const realTruckStyles = `
 }
 
 .hero::after{opacity:.72}
+
 @media(max-width:1080px){
   .truck-stage{width:790px;max-width:98vw;height:500px;transform:none}
   .truck-real,.truck-protection-pass{object-position:center center}
   .truck-hero{margin:14px -7vw -24px -3vw}
 }
+
+/* ETAPA MOBILE — mantém o desktop intacto e recompõe a hero para telas pequenas */
 @media(max-width:620px){
-  .truck-hero{min-height:330px;margin:12px -19vw -8px -15vw}
-  .truck-stage{width:620px;max-width:130vw;height:345px}
-  .truck-real,.truck-protection-pass{object-position:center center}
+  .hero-inner{padding:30px 0 18px!important;gap:10px!important}
+  .hero-copy{padding-right:0!important;max-width:100%!important}
+  .hero h1{font-size:clamp(34px,10.4vw,44px)!important;line-height:1.045!important;letter-spacing:-.025em!important;max-width:100%!important}
+  .hero-copy p{font-size:14.5px!important;line-height:1.62!important;margin-top:18px!important;max-width:100%!important}
+  .hero-actions{margin-top:22px!important;gap:10px!important}
+  .hero-actions .btn{width:100%!important;min-height:50px!important;padding:14px 18px!important}
+
+  .truck-hero{min-height:286px!important;margin:2px -13vw -12px -10vw!important;justify-content:center!important;overflow:visible!important}
+  .truck-stage{width:520px!important;max-width:118vw!important;height:292px!important;transform:none!important}
+  .truck-real,.truck-protection-pass{object-position:center center!important}
+  .truck-real{filter:drop-shadow(0 22px 24px rgba(0,0,0,.42)) drop-shadow(0 0 12px rgba(68,119,190,.06))}
   .truck-protection-pass{animation-duration:7s;-webkit-mask-size:300% 100%;mask-size:300% 100%}
-  .truck-glow{left:18%;right:8%;bottom:4%;height:70px}
+  .truck-glow{left:16%!important;right:9%!important;bottom:3%!important;height:58px!important;filter:blur(18px)!important}
+  .hero::after{inset:auto -28% 0 8%!important;height:72px!important;opacity:.42!important}
 }
+
+@media(max-width:390px){
+  .hero-inner{padding-top:26px!important}
+  .hero h1{font-size:clamp(32px,9.8vw,39px)!important}
+  .hero-copy p{font-size:14px!important}
+  .truck-hero{min-height:262px!important;margin:0 -11vw -10px -9vw!important}
+  .truck-stage{width:470px!important;max-width:116vw!important;height:265px!important}
+}
+
 @media(prefers-reduced-motion:reduce){
   .truck-protection-pass{animation:none;opacity:.12;-webkit-mask-position:50% 0;mask-position:50% 0}
 }
