@@ -9,9 +9,7 @@ const productionStyles = `
 .club-inner{grid-template-columns:330px minmax(0,1fr);gap:68px;align-items:center}
 .club h2{margin-top:0}
 .club-side>p{margin-top:22px;font-size:16px;line-height:1.9}
-.club-note{margin-top:28px;display:flex;align-items:flex-start;gap:14px;padding:0;border:0;border-radius:0;background:transparent;color:#45546d;font-size:13.5px;font-weight:500;line-height:1.65}
-.club-note::before{content:"";display:block;width:36px;height:2px;margin-top:10px;flex:0 0 36px;background:var(--orange);border-radius:999px}
-.club-note svg{display:none}
+.club-note{display:none!important}
 .club-right{overflow:hidden}
 .pills{display:none!important}
 .carousel{margin-top:0;overflow:hidden;padding:14px 0 18px}
@@ -24,7 +22,7 @@ const productionStyles = `
 .tag{margin-top:auto;align-self:flex-start;font-size:12px;padding:6px 11px;border-radius:999px;background:#f2f5f9}
 .car-arrow,.dots{display:none!important}
 @media(max-width:1080px){.club-inner{grid-template-columns:1fr;gap:34px}.club-side{max-width:650px}.carousel{margin-left:-4px;margin-right:-4px}}
-@media(max-width:620px){.club{padding:72px 0 62px}.club-inner{gap:30px}.bcard{flex-basis:244px;min-height:286px;padding:25px 22px 22px}.blogo{height:108px}.track{gap:16px;padding-inline:2px}.club-note{max-width:310px}}
+@media(max-width:620px){.club{padding:72px 0 62px}.club-inner{gap:30px}.bcard{flex-basis:244px;min-height:286px;padding:25px 22px 22px}.blogo{height:108px}.track{gap:16px;padding-inline:2px}}
 </style>`;
 
 const autoplayScript = `
@@ -46,7 +44,7 @@ const autoplayScript = `
   let paused = false;
   let raf = null;
   let last = performance.now();
-  const speed = 34; // pixels por segundo
+  const speed = 34;
 
   const tick = (now) => {
     const dt = Math.min((now - last) / 1000, 0.05);
@@ -79,8 +77,10 @@ let cleaned = source
   .replace('<span class="eyebrow">Clube de Benefícios</span>', '')
   .replace('<span class="eyebrow">Como Funciona</span>', '')
   .replace('<span>Desenvolvido com <span class="heart">❤</span> por <strong>i5x</strong></span>', '')
+  .replace('Clientes Grupo Nogueira terão acesso a uma rede de parceiros com condições especiais e descontos em diferentes categorias. Um clube de vantagens criado para gerar economia no dia a dia.', 'Tenha acesso a uma rede de parceiros com condições especiais e descontos em diferentes categorias. Um clube de vantagens reais, criado para você economizar no dia a dia.')
   .replace(/<div class="pills" id="tabs">[\s\S]*?<\/div>\s*<div class="carousel">/, '<div class="carousel">')
-  .replace(/<span class="club-note">[\s\S]*?<\/span>/, '<div class="club-note">Benefícios selecionados para fazer parte da sua rotina, dentro e fora da estrada.</div>')
+  .replace(/<span class="club-note">[\s\S]*?<\/span>/, '')
+  .replace(/<div class="club-note">[\s\S]*?<\/div>/, '')
   .replace('</head>', productionStyles + '\n</head>')
   .replace('</body>', autoplayScript + '\n</body>');
 
