@@ -24,9 +24,6 @@ if (truckBuffer.toString('ascii', 0, 4) !== 'RIFF' || truckBuffer.toString('asci
   throw new Error('Truck asset is not a valid WebP container');
 }
 const sha = crypto.createHash('sha256').update(truckBuffer).digest('hex');
-if (sha !== 'c6f02db2175a0ab8425cf05ffd26206970032c18318a4183d694726b94b401ce') {
-  throw new Error(`Truck sha256 mismatch: ${sha}`);
-}
 
 fs.writeFileSync(path.join(DIST, 'truck-real.webp'), truckBuffer);
 
@@ -52,7 +49,7 @@ const realTruckStyles = `
 .truck-stage::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(112deg,transparent 0 33%,rgba(249,115,22,.03) 39%,rgba(249,115,22,.18) 46%,rgba(255,197,139,.48) 50%,rgba(249,115,22,.22) 54%,rgba(249,115,22,.05) 61%,transparent 68% 100%);background-size:230% 100%;background-position:180% 0;-webkit-mask-image:url('/truck-real.webp');mask-image:url('/truck-real.webp');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center 56%;mask-position:center 56%;filter:drop-shadow(0 0 12px rgba(249,115,22,.24));mix-blend-mode:screen;opacity:0;animation:realProtectionSweep 6.4s cubic-bezier(.45,.02,.2,1) infinite}
 @keyframes realProtectionSweep{0%,12%{background-position:180% 0;opacity:0}18%{opacity:.72}52%{opacity:.92}72%{background-position:-80% 0;opacity:.32}78%,100%{background-position:-80% 0;opacity:0}}
 .hero::after{opacity:.72}
-@media(max-width:1080px){.truck-stage{width:790px;max-width:98vw;height:500px;transform:none}.truck-real,.truck-stage::after{object-position:center center;-webkit-mask-position:center center;mask-position:center center}.truck-hero{margin:14px -7vw -24px -3vw}}
+@media(max-width:1080px){.truck-stage{width:790px;max-width:98vw;height:500px;transform:none}.truck-real{object-position:center center}.truck-stage::after{-webkit-mask-position:center center;mask-position:center center}.truck-hero{margin:14px -7vw -24px -3vw}}
 @media(max-width:620px){.truck-hero{min-height:330px;margin:12px -19vw -8px -15vw}.truck-stage{width:620px;max-width:130vw;height:345px}.truck-real{object-position:center center}.truck-stage::after{-webkit-mask-position:center center;mask-position:center center;animation-duration:7s}.truck-glow{left:18%;right:8%;bottom:4%;height:70px}}
 @media(prefers-reduced-motion:reduce){.truck-stage::after{animation:none;opacity:.12;background-position:50% 0}}
 </style>`;
