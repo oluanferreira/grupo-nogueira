@@ -121,6 +121,42 @@ const productionStyles = `
 @media(prefers-reduced-motion:reduce){.protection-sweep{animation:none;display:none}}
 </style>`;
 
+const v2Styles = `
+<style id="site-v2-refinements">
+/* v0.2 — hero de cotação e catálogo de produtos */
+.hero-v2 .hero-inner{grid-template-columns:1.02fr .98fr;gap:42px;min-height:calc(100vh - var(--headerH));padding:54px 0 66px}
+.hero-v2 .hero-copy{padding-right:0;max-width:620px}
+.hero-v2 .hero-copy p{max-width:540px}
+.hero-v2-side{position:relative;display:grid;gap:18px;align-content:center;min-width:0}
+.hero-v2 .hero-quote{position:relative;z-index:4;align-self:center}
+.hero-v2 .quote-form{padding:28px;background:rgba(14,30,58,.92);backdrop-filter:blur(12px);box-shadow:0 26px 60px rgba(0,0,0,.22)}
+.hero-v2 .quote-form .btn{width:100%;justify-self:stretch}
+.hero-v2 .quote-status{font-size:12px}
+.hero-v2 .hero-quote::before{content:"";position:absolute;inset:-18px -18px 18px 18px;border:1px solid rgba(249,115,22,.20);border-radius:24px;transform:rotate(-2deg);pointer-events:none}
+.hero-v2 .hero-quote::after{content:"";position:absolute;right:-32px;bottom:-24px;width:150px;height:80px;background:linear-gradient(168deg,transparent 43%,rgba(249,115,22,.62) 44%,rgba(255,210,164,.86) 45%,transparent 48%);opacity:.55;pointer-events:none}
+.hero-ecosystem{position:relative;min-height:430px;display:grid;place-items:center;isolation:isolate}
+.hero-v2-side .hero-ecosystem{min-height:186px}
+.hero-ecosystem::before{content:"";position:absolute;width:360px;height:360px;border:1px solid rgba(255,255,255,.11);border-radius:50%;box-shadow:0 0 0 22px rgba(255,255,255,.018),0 0 0 44px rgba(249,115,22,.06);transform:rotate(-14deg)}
+.hero-ecosystem::after{content:"";position:absolute;inset:12% 0 8% 4%;background:linear-gradient(145deg,transparent 47%,rgba(249,115,22,.68) 48%,rgba(255,209,160,.78) 49%,transparent 50%),linear-gradient(145deg,transparent 62%,rgba(255,255,255,.10) 63%,transparent 64%);pointer-events:none}
+.hero-ecosystem-mark{position:relative;z-index:2;width:138px;height:auto;filter:drop-shadow(0 20px 25px rgba(0,0,0,.30))}
+.hero-ecosystem-labels{position:absolute;inset:0;z-index:3;pointer-events:none}
+.hero-ecosystem-label{position:absolute;display:inline-flex;align-items:center;gap:8px;color:#e7eef8;font-size:12px;font-weight:700;letter-spacing:.02em}
+.hero-ecosystem-label::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 11px rgba(249,115,22,.7)}
+.hero-ecosystem-label:nth-child(1){top:10%;left:7%}.hero-ecosystem-label:nth-child(2){top:26%;right:2%}.hero-ecosystem-label:nth-child(3){bottom:21%;right:4%}.hero-ecosystem-label:nth-child(4){bottom:8%;left:10%}.hero-ecosystem-label:nth-child(5){top:49%;left:1%}
+.products{background:var(--navy-2);padding:92px 0 100px;position:relative;overflow:hidden}
+.products::after{content:"";position:absolute;inset:auto -8% 1% 40%;height:130px;background:linear-gradient(174deg,transparent 42%,rgba(249,115,22,.55) 43%,rgba(255,205,156,.72) 44%,transparent 47%);transform:skewX(-8deg);opacity:.65;pointer-events:none}
+.products-head{display:flex;align-items:flex-end;justify-content:space-between;gap:34px;position:relative;z-index:1}.products-head h2{font-size:clamp(30px,3.6vw,44px);font-weight:800;line-height:1.15;letter-spacing:-.01em;margin-top:18px;max-width:660px}.products-intro{max-width:420px;color:var(--muted);font-size:15.5px;line-height:1.8}
+.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:44px;position:relative;z-index:1}.product-card{min-height:392px;display:flex;flex-direction:column;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.035);transition:.25s}.product-card:hover{transform:translateY(-5px);border-color:rgba(249,115,22,.52);box-shadow:0 20px 40px rgba(0,0,0,.20)}.product-media{position:relative;height:210px;overflow:hidden;background:#0a1628;display:grid;place-items:center}.product-media::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 40%,rgba(249,115,22,.05) 44%,rgba(249,115,22,.38) 50%,rgba(255,205,156,.55) 52%,rgba(249,115,22,.07) 59%,transparent 65%);background-size:280% 100%;animation:productSweep 6.6s cubic-bezier(.45,.02,.2,1) infinite;mix-blend-mode:screen;pointer-events:none}.product-media.has-truck::after{display:none}@keyframes productSweep{0%,12%{background-position:145% 0;opacity:0}20%{opacity:.6}54%{opacity:.78}76%,100%{background-position:-55% 0;opacity:0}}
+.product-art{position:absolute;inset:0;display:grid;place-items:center;color:#dbe6f4}.product-art::before{content:"";width:108px;height:108px;border:1px solid rgba(255,255,255,.20);border-radius:30% 70% 45% 55%/45% 45% 55% 55%;transform:rotate(18deg);box-shadow:inset 0 0 28px rgba(249,115,22,.14),0 0 30px rgba(249,115,22,.10)}.product-art span{position:absolute;font-family:'Plus Jakarta Sans';font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.74)}.product-art-home{background:radial-gradient(circle at 50% 45%,rgba(53,106,136,.38),transparent 55%),linear-gradient(145deg,#0f2644,#0a1628)}.product-art-life{background:radial-gradient(circle at 50% 45%,rgba(249,115,22,.24),transparent 55%),linear-gradient(145deg,#162d47,#0a1628)}.product-art-future{background:radial-gradient(circle at 50% 45%,rgba(81,127,164,.34),transparent 55%),linear-gradient(145deg,#132842,#0a1628)}.product-art-special{background:radial-gradient(circle at 50% 45%,rgba(249,115,22,.18),transparent 55%),linear-gradient(145deg,#20283a,#0a1628)}
+.product-card-body{padding:22px 20px 20px;display:flex;flex:1;flex-direction:column}.product-card h3{font-size:18px;font-weight:700}.product-card p{margin-top:10px;color:var(--muted);font-size:13.5px;line-height:1.65}.product-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:18px}.product-list span{font-size:11.5px;color:#dfe7f3;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:5px 8px}.product-link{display:inline-flex;align-items:center;gap:7px;margin-top:18px;color:var(--orange-2);font-size:12px;font-weight:700}.product-link::after{content:"→";font-size:15px}
+.product-media .truck-real,.product-media .truck-protection-pass{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 54%;z-index:2}.product-media .truck-protection-pass{z-index:4}.product-media .truck-glow,.product-media .product-glow{position:absolute;z-index:1;left:8%;right:8%;bottom:0;height:60px;background:radial-gradient(ellipse,rgba(249,115,22,.28),transparent 72%);filter:blur(16px)}
+.auto-media .truck-real,.auto-media .truck-protection-pass{object-fit:contain;object-position:center 72%}.auto-media .truck-real{width:88%;left:7%;}.auto-media .truck-protection-pass{width:88%;left:7%}.auto-vehicle{position:absolute;z-index:3;object-fit:contain;filter:drop-shadow(0 13px 13px rgba(0,0,0,.38));pointer-events:none}.auto-vehicle-car{width:64%;right:-9%;bottom:2%;}.auto-vehicle-moto{width:45%;left:-6%;bottom:0;}.auto-vehicle-badges{position:absolute;z-index:5;left:16px;bottom:13px;display:flex;gap:5px}.auto-vehicle-badges span{font-size:10px;line-height:1;color:#fff;background:rgba(8,21,39,.76);border:1px solid rgba(255,255,255,.16);padding:5px 7px;border-radius:999px;backdrop-filter:blur(8px)}
+.product-media .product-photo{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center;filter:saturate(.9) contrast(1.04)}
+@media(max-width:1080px){.hero-v2 .hero-inner{grid-template-columns:1fr;gap:30px}.hero-v2 .hero-copy{max-width:720px}.hero-v2-side{max-width:700px;width:100%}.hero-v2 .hero-quote{max-width:700px;width:100%}.hero-v2-side .hero-ecosystem{min-height:250px}.hero-ecosystem{min-height:300px;order:-1}.hero-ecosystem::before{width:260px;height:260px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-card{min-height:360px}}
+@media(max-width:620px){.hero-v2 .hero-inner{padding:26px 0 34px;gap:22px}.hero-v2 .hero-copy p{font-size:15px}.hero-v2 .hero-actions .btn{min-height:54px}.hero-v2 .quote-form{padding:20px}.hero-v2 .hero-quote::before{inset:-10px -8px 10px 8px}.hero-v2-side{gap:14px}.hero-v2-side .hero-ecosystem{min-height:220px}.hero-ecosystem{min-height:220px;order:-1}.hero-ecosystem::before{width:194px;height:194px;box-shadow:0 0 0 14px rgba(255,255,255,.018),0 0 0 28px rgba(249,115,22,.05)}.hero-ecosystem-mark{width:86px}.hero-ecosystem-label{font-size:10px}.hero-ecosystem-label:nth-child(1){top:4%;left:0}.hero-ecosystem-label:nth-child(2){top:20%;right:0}.hero-ecosystem-label:nth-child(3){bottom:17%;right:0}.hero-ecosystem-label:nth-child(4){bottom:0;left:3%}.hero-ecosystem-label:nth-child(5){top:47%;left:0}.products{padding:72px 0 76px}.products-head{display:block}.products-intro{margin-top:18px}.product-grid{grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}.product-card{min-height:348px}.product-media{height:150px}.product-card-body{padding:18px 15px 16px}.product-card h3{font-size:16px}.product-card p{font-size:13px}.product-list span{font-size:11px;padding:4px 7px}.product-link{font-size:11px}.product-media .truck-real,.product-media .truck-protection-pass{object-fit:cover;object-position:center center}}
+@media(max-width:390px){.product-grid{grid-template-columns:1fr}.product-card{min-height:320px}}
+</style>`;
+
 const heroMarkup = `
 <div class="hero-art reveal truck-hero" aria-hidden="true">
   <div class="truck-stage">
@@ -174,6 +210,51 @@ const heroMarkup = `
     <div class="hero-points"><span class="hero-point"><i></i>Seguro para pesados</span><span class="hero-point"><i></i>Atendimento próximo</span><span class="hero-point"><i></i>Assistência na estrada</span></div>
   </div>
 </div>`;
+
+const heroV2Markup = `
+<section class="hero hero-v2" id="inicio">
+  <div class="container hero-inner">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">Ecossistema de seguros</span>
+      <h1 style="margin-top:24px">Seguros inteligentes para tudo que <span class="accent">move você.</span></h1>
+      <p>Do auto aos pesados, da sua casa à sua família: soluções de seguro, assistência e orientação para acompanhar cada avanço.</p>
+      <div class="hero-actions"><a href="#contato" class="btn btn-primary">Quero uma cotação</a><a href="#produtos" class="btn btn-ghost">Conhecer produtos</a></div>
+    </div>
+    <div class="hero-v2-side reveal">
+      <div class="hero-ecosystem" aria-hidden="true">
+        <img class="hero-ecosystem-mark" src="/escudo-oficial-web.png" alt="">
+        <div class="hero-ecosystem-labels"><span class="hero-ecosystem-label">Mobilidade</span><span class="hero-ecosystem-label">Patrimônio</span><span class="hero-ecosystem-label">Vida &amp; Saúde</span><span class="hero-ecosystem-label">Projetos &amp; Futuro</span><span class="hero-ecosystem-label">Soluções especiais</span></div>
+      </div>
+      <div class="hero-quote" id="contato">
+        <form class="quote-form" id="quoteForm" novalidate>
+          <div class="quote-copy"><span class="eyebrow">Comece sua cotação</span><h2>Encontre o seguro certo para o seu momento.</h2><p>Preencha seus dados e conte o que você precisa. A equipe do Grupo Nogueira orienta o próximo passo.</p></div>
+          <div class="quote-field"><label for="quoteName">Nome</label><input id="quoteName" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required></div>
+          <div class="quote-field"><label for="quotePhone">Telefone</label><input id="quotePhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" required></div>
+          <div class="quote-field full"><label for="quoteEmail">E-mail</label><input id="quoteEmail" name="email" autocomplete="email" type="email" placeholder="voce@exemplo.com" required></div>
+          <div class="quote-field full"><label for="quoteSolution">O que você precisa?</label><select id="quoteSolution" name="solution" required><option value="" selected disabled>Selecione uma frente</option><option>Mobilidade</option><option>Patrimônio</option><option>Vida e Saúde</option><option>Projetos e Futuro</option><option>Pet e Dispositivos</option><option>Vacina Antifurto</option></select></div>
+          <div class="quote-field full"><label for="quoteMessage">Mensagem (opcional)</label><textarea id="quoteMessage" name="message" placeholder="Se quiser, conte mais sobre o seu momento."></textarea></div>
+          <button class="btn btn-primary" type="submit">Enviar pedido de cotação</button>
+          <p class="quote-status" id="quoteStatus" role="status" aria-live="polite">Os canais oficiais de atendimento serão conectados assim que os dados institucionais forem confirmados.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>`;
+
+const productsMarkup = `
+<section class="products" id="produtos">
+  <div class="container">
+    <div class="products-head reveal"><div><span class="eyebrow">Nossos produtos</span><h2>Um ecossistema completo para cada fase da sua vida.</h2></div><p class="products-intro">Conheça as frentes do Grupo Nogueira e encontre a combinação de seguros que faz sentido para o seu momento.</p></div>
+    <div class="product-grid">
+      <article class="product-card product-card-mobility reveal"><div class="product-media auto-media"><div class="product-glow"></div><svg class="truck-svg" viewBox="0 0 980 620" aria-hidden="true"></svg><img class="auto-vehicle auto-vehicle-car" src="/auto-car.webp" alt="Carro para seguro auto" loading="lazy"><img class="auto-vehicle auto-vehicle-moto" src="/auto-moto.webp" alt="Moto para seguro de moto" loading="lazy"><div class="auto-vehicle-badges"><span>Auto</span><span>Moto</span><span>Pesados</span></div></div><div class="product-card-body"><h3>Mobilidade</h3><p>Seguro para os veículos e as rotinas que não podem parar.</p><div class="product-list"><span>Auto</span><span>Moto</span><span>Caminhões</span></div><a class="product-link" href="#contato" data-solution="Mobilidade">Cotar mobilidade</a></div></article>
+      <article class="product-card reveal"><div class="product-media"><img class="product-photo" src="/product-property-sm.webp" alt="Casa contemporânea ao anoitecer" loading="lazy"></div><div class="product-card-body"><h3>Patrimônio</h3><p>Seguro para sua casa, empresa e tudo que você construiu.</p><div class="product-list"><span>Residencial</span><span>Empresarial</span></div><a class="product-link" href="#contato" data-solution="Patrimônio">Cotar patrimônio</a></div></article>
+      <article class="product-card reveal"><div class="product-media"><img class="product-photo" src="/product-life-sm.webp" alt="Família em atendimento consultivo" loading="lazy"></div><div class="product-card-body"><h3>Vida &amp; Saúde</h3><p>Cuidado contínuo para você, sua família e sua equipe.</p><div class="product-list"><span>Vida</span><span>Saúde</span></div><a class="product-link" href="#contato" data-solution="Vida e Saúde">Cotar vida e saúde</a></div></article>
+      <article class="product-card reveal"><div class="product-media"><img class="product-photo" src="/product-future-sm.webp" alt="Mala, chaves e caderno de planejamento" loading="lazy"></div><div class="product-card-body"><h3>Projetos &amp; Futuro</h3><p>Planejamento para realizar seus próximos passos com tranquilidade.</p><div class="product-list"><span>Consórcio</span><span>Viagem</span></div><a class="product-link" href="#contato" data-solution="Projetos e Futuro">Cotar projeto</a></div></article>
+      <article class="product-card reveal"><div class="product-media"><img class="product-photo" src="/product-special-sm.webp" alt="Cão ao lado de um smartphone" loading="lazy"></div><div class="product-card-body"><h3>Pet &amp; Dispositivos</h3><p>Seguros para os companheiros e tecnologias presentes na sua rotina.</p><div class="product-list"><span>Pet</span><span>Celular</span></div><a class="product-link" href="#contato" data-solution="Pet e Dispositivos">Cotar solução</a></div></article>
+      <article class="product-card product-card-vaccine reveal"><div class="product-media"><img class="product-photo" src="/product-vaccine-sm.webp" alt="Codificação a laser em peça metálica de caminhão" loading="lazy"></div><div class="product-card-body"><h3>Vacina Antifurto</h3><p>Codificação a laser de peças de caminhão para dificultar o comércio irregular.</p><div class="product-list"><span>Laser</span><span>Pesados</span><span>Rastreabilidade</span></div><a class="product-link" href="#contato" data-solution="Vacina Antifurto">Conhecer a solução</a></div></article>
+    </div>
+  </div>
+</section>`;
 
 const solutionsMarkup = `
 <section class="solutions" id="solucoes">
@@ -263,7 +344,7 @@ let cleaned = source
   .replace('Conhecer o clube', 'Explorar soluções')
   .replace('href="#beneficios" class="btn btn-ghost"', 'href="#solucoes" class="btn btn-ghost"')
   .replace('<title>Grupo Nogueira | Corretora de Seguros</title>', '<title>Grupo Nogueira | Ecossistema de Seguros</title>')
-  .replace('<nav class="main-nav" id="mainNav"><a href="#inicio">Início</a><a href="#beneficios">Clube de benefícios</a><a href="#como-funciona">Como funciona</a></nav>', '<nav class="main-nav" id="mainNav"><a href="#inicio">Início</a><a href="#solucoes">Soluções</a><a href="#beneficios">Clube de benefícios</a><a href="#como-funciona">Como funciona</a></nav>')
+  .replace('<nav class="main-nav" id="mainNav"><a href="#inicio">Início</a><a href="#beneficios">Clube de benefícios</a><a href="#como-funciona">Como funciona</a></nav>', '<nav class="main-nav" id="mainNav"><a href="#inicio">Início</a><a href="#produtos">Produtos</a><a href="#beneficios">Clube de benefícios</a><a href="#como-funciona">Como funciona</a></nav>')
   .replace('oferecemos soluções em proteção veicular e benefícios que fazem a diferença no seu dia a dia.', 'reunimos soluções de seguro, assistência e benefícios para cuidar da sua mobilidade, patrimônio, vida e próximos projetos.')
   .replace('Proteção Veicular', 'Soluções em seguros')
   .replace('Proteção que <span class="accent">vai além do seu veículo.</span>', 'Seguros que <span class="accent">vão além do seu veículo.</span>')
@@ -280,15 +361,14 @@ let cleaned = source
   .replace(/<div class="pills" id="tabs">[\s\S]*?<\/div>\s*<div class="carousel">/, '<div class="carousel">')
   .replace(/<span class="club-note">[\s\S]*?<\/span>/, '')
   .replace(/<div class="club-note">[\s\S]*?<\/div>/, '')
-  .replace(/<div class="hero-art reveal" aria-hidden="true">[\s\S]*?<\/svg>\s*<\/div>/, heroMarkup)
-  .replace('<section class="club" id="beneficios">', solutionsMarkup + '\n<section class="club" id="beneficios">')
-  .replace('<section class="cta-wrap">', quoteMarkup + '\n<section class="cta-wrap">')
+  .replace(/<section class="hero" id="inicio">[\s\S]*?<\/section>/, heroV2Markup)
+  .replace('<section class="club" id="beneficios">', productsMarkup + '\n<section class="club" id="beneficios">')
   .replace('<footer id="contato">', '<footer id="rodape">')
-  .replace('</head>', productionStyles + '\n</head>')
+  .replace('</head>', productionStyles + '\n' + v2Styles + '\n</head>')
   .replace('</body>', autoplayScript + '\n' + quoteScript + '\n</body>');
 
 fs.mkdirSync(path.join(__dirname, 'dist'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'dist', 'index.html'), cleaned, 'utf8');
 fs.copyFileSync(path.join(__dirname, 'logo-oficial-web.png'), path.join(__dirname, 'dist', 'logo-oficial-web.png'));
 fs.copyFileSync(path.join(__dirname, 'escudo-oficial-web.png'), path.join(__dirname, 'dist', 'escudo-oficial-web.png'));
-
+['auto-moto.webp','auto-car.webp','product-property-sm.webp','product-life-sm.webp','product-future-sm.webp','product-special-sm.webp','product-vaccine-sm.webp'].forEach(file => fs.copyFileSync(path.join(__dirname, file), path.join(__dirname, 'dist', file)));
