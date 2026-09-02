@@ -5,6 +5,23 @@ const source = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
 
 const productionStyles = `
 <style id="production-refinements">
+/* Ecossistema de soluções — mesma linguagem visual do site */
+.solutions{background:var(--navy-2);padding:88px 0 92px;position:relative;overflow:hidden}
+.solutions::after{content:"";position:absolute;inset:auto -10% -42px 32%;height:120px;background:linear-gradient(174deg,transparent 42%,rgba(249,115,22,.16) 43%,rgba(249,115,22,.42) 44%,transparent 47%);transform:skewX(-10deg);pointer-events:none}
+.solutions-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;position:relative;z-index:1}
+.solutions h2{font-size:clamp(30px,3.6vw,44px);font-weight:800;line-height:1.15;letter-spacing:-.01em;margin-top:18px;max-width:660px}
+.solutions-intro{max-width:410px;color:var(--muted);font-size:15.5px;line-height:1.8}
+.solution-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:42px;position:relative;z-index:1}
+.solution-card{min-height:250px;padding:24px 20px 22px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.035);display:flex;flex-direction:column;transition:.25s}
+.solution-card:hover{transform:translateY(-5px);border-color:rgba(249,115,22,.55);background:rgba(249,115,22,.06);box-shadow:0 18px 34px rgba(0,0,0,.16)}
+.solution-index{font-family:'Plus Jakarta Sans';font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--orange)}
+.solution-card h3{font-size:18px;font-weight:700;margin-top:18px}
+.solution-card p{color:var(--muted);font-size:13.5px;line-height:1.65;margin-top:10px}
+.solution-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:18px}
+.solution-list span{font-size:11.5px;color:#dfe7f3;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:5px 8px}
+@media(max-width:1080px){.solution-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.solution-card{min-height:220px}}
+@media(max-width:620px){.solutions{padding:72px 0 70px}.solutions-head{display:block}.solutions-intro{margin-top:18px}.solution-grid{grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}.solution-card{min-height:230px;padding:20px 16px}.solution-card h3{font-size:16px}.solution-card p{font-size:13px}.solution-list span{font-size:11px;padding:4px 7px}}
+
 /* Clube de benefícios */
 .club-inner{grid-template-columns:330px minmax(0,1fr);gap:68px;align-items:center}
 .club h2{margin-top:0}
@@ -134,9 +151,26 @@ const heroMarkup = `
     </svg>
     <div class="protection-shell"></div>
     <div class="protection-sweep"></div>
-    <div class="hero-points"><span class="hero-point"><i></i>Proteção para pesados</span><span class="hero-point"><i></i>Atendimento próximo</span><span class="hero-point"><i></i>Assistência na estrada</span></div>
+    <div class="hero-points"><span class="hero-point"><i></i>Seguro para pesados</span><span class="hero-point"><i></i>Atendimento próximo</span><span class="hero-point"><i></i>Assistência na estrada</span></div>
   </div>
 </div>`;
+
+const solutionsMarkup = `
+<section class="solutions" id="solucoes">
+  <div class="container">
+    <div class="solutions-head reveal">
+      <div><span class="eyebrow">Ecossistema de seguros</span><h2>Uma estrutura completa para cuidar de <span class="accent">o que importa.</span></h2></div>
+      <p class="solutions-intro">Do que move sua operação ao que sustenta sua vida, o Grupo Nogueira reúne orientação, seguro e assistência em um só lugar.</p>
+    </div>
+    <div class="solution-grid">
+      <article class="solution-card reveal"><span class="solution-index">01</span><h3>Mobilidade</h3><p>Seguro para veículos e rotinas que não podem parar.</p><div class="solution-list"><span>Auto</span><span>Moto</span><span>Pesados</span></div></article>
+      <article class="solution-card reveal"><span class="solution-index">02</span><h3>Patrimônio</h3><p>Segurança para sua casa, empresa e tudo que você construiu.</p><div class="solution-list"><span>Residencial</span><span>Empresarial</span></div></article>
+      <article class="solution-card reveal"><span class="solution-index">03</span><h3>Vida &amp; Saúde</h3><p>Cuidado contínuo para você, sua família e sua equipe.</p><div class="solution-list"><span>Vida</span><span>Saúde</span></div></article>
+      <article class="solution-card reveal"><span class="solution-index">04</span><h3>Projetos &amp; Futuro</h3><p>Planejamento para realizar seus próximos passos com tranquilidade.</p><div class="solution-list"><span>Consórcio</span><span>Viagem</span></div></article>
+      <article class="solution-card reveal"><span class="solution-index">05</span><h3>Seguros especializados</h3><p>Recursos adicionais para riscos específicos e novas necessidades.</p><div class="solution-list"><span>Pet</span><span>Celular</span><span>Vacina Antifurto</span></div></article>
+    </div>
+  </div>
+</section>`;
 
 const autoplayScript = `
 <script id="benefits-autoplay">
@@ -155,19 +189,30 @@ const autoplayScript = `
 </script>`;
 
 let cleaned = source
-  .replace('<span class="eyebrow">Grupo Nogueira Corretora de Seguros</span>', '')
+  .replace('<span class="eyebrow">Grupo Nogueira Corretora de Seguros</span>', '<span class="eyebrow">Ecossistema de seguros</span>')
   .replace('<span class="eyebrow">Clube de Benefícios</span>', '')
   .replace('<span class="eyebrow">Como Funciona</span>', '')
   .replace('<span>Desenvolvido com <span class="heart">❤</span> por <strong>i5x</strong></span>', '')
   .replace('Clientes Grupo Nogueira terão acesso a uma rede de parceiros com condições especiais e descontos em diferentes categorias. Um clube de vantagens criado para gerar economia no dia a dia.', 'Tenha acesso a uma rede de parceiros com condições especiais e descontos em diferentes categorias. Um clube de vantagens reais, criado para você economizar no dia a dia.')
-  .replace('Seu veículo protegido. Sua rotina com <span class="accent">mais vantagens.</span>', 'Proteção inteligente para quem move <span class="accent">grandes trajetos.</span>')
-  .replace('Soluções em seguro e proteção veicular com atendimento próximo, assistência quando você precisa e benefícios que continuam além da estrada.', 'Soluções em seguro e proteção para veículos pesados, com atendimento próximo, assistência quando você precisa e benefícios que continuam além da estrada.')
+  .replace('Seu veículo protegido. Sua rotina com <span class="accent">mais vantagens.</span>', 'Seguros inteligentes para tudo que <span class="accent">move você.</span>')
+  .replace('Soluções em seguro e proteção veicular com atendimento próximo, assistência quando você precisa e benefícios que continuam além da estrada.', 'Do auto aos pesados, da sua casa à sua família: soluções de seguro, assistência e orientação para acompanhar cada avanço.')
+  .replace('Conhecer o clube', 'Explorar soluções')
+  .replace('href="#beneficios" class="btn btn-ghost"', 'href="#solucoes" class="btn btn-ghost"')
+  .replace('<title>Grupo Nogueira | Corretora de Seguros</title>', '<title>Grupo Nogueira | Ecossistema de Seguros</title>')
+  .replace('<nav class="main-nav" id="mainNav"><a href="#inicio">Início</a><a href="#beneficios">Clube de benefícios</a><a href="#como-funciona">Como funciona</a></nav>', '<nav class="main-nav" id="mainNav"><a href="#inicio">Início</a><a href="#solucoes">Soluções</a><a href="#beneficios">Clube de benefícios</a><a href="#como-funciona">Como funciona</a></nav>')
+  .replace('oferecemos soluções em proteção veicular e benefícios que fazem a diferença no seu dia a dia.', 'reunimos soluções de seguro, assistência e benefícios para cuidar da sua mobilidade, patrimônio, vida e próximos projetos.')
+  .replace('Proteção Veicular', 'Soluções em seguros')
+  .replace('Proteção que <span class="accent">vai além do seu veículo.</span>', 'Seguros que <span class="accent">vão além do seu veículo.</span>')
+  .replace('Escolha sua proteção', 'Escolha seu seguro')
+  .replace('Vamos proteger o que move você?', 'Vamos cuidar do que move você?')
   .replace(/<div class="pills" id="tabs">[\s\S]*?<\/div>\s*<div class="carousel">/, '<div class="carousel">')
   .replace(/<span class="club-note">[\s\S]*?<\/span>/, '')
   .replace(/<div class="club-note">[\s\S]*?<\/div>/, '')
   .replace(/<div class="hero-art reveal" aria-hidden="true">[\s\S]*?<\/svg>\s*<\/div>/, heroMarkup)
+  .replace('<section class="club" id="beneficios">', solutionsMarkup + '\n<section class="club" id="beneficios">')
   .replace('</head>', productionStyles + '\n</head>')
   .replace('</body>', autoplayScript + '\n</body>');
 
 fs.mkdirSync(path.join(__dirname, 'dist'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'dist', 'index.html'), cleaned, 'utf8');
+
