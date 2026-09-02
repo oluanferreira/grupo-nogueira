@@ -25,6 +25,9 @@ const productionStyles = `
 @media(max-width:1080px){.solution-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.solution-card{min-height:220px}}
 @media(max-width:620px){.solutions{padding:72px 0 70px}.solutions-head{display:block}.solutions-intro{margin-top:18px}.solution-grid{grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}.solution-card{min-height:230px;padding:20px 16px}.solution-card h3{font-size:16px}.solution-card p{font-size:13px}.solution-list span{font-size:11px;padding:4px 7px}}
 
+.brand-lockup{display:block;width:208px;height:auto;max-height:56px;object-fit:contain;object-position:left center}
+@media(max-width:620px){.brand-lockup{width:178px;max-height:46px}}
+
 /* Cotação — estrutura pronta para conectar aos canais oficiais */
 .quote{background:var(--navy);padding:0 0 96px}
 .quote-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
@@ -209,6 +212,8 @@ const quoteMarkup = `
   </div>
 </section>`;
 
+const brandMarkup = '<a class="brand" href="#inicio" aria-label="Grupo Nogueira Corretora de Seguros"><img class="brand-lockup" src="/logo-oficial-web.png" alt="Grupo Nogueira Corretora de Seguros"></a>';
+
 const autoplayScript = `
 <script id="benefits-autoplay">
 (() => {
@@ -263,6 +268,7 @@ let cleaned = source
   .replace('Proteção que <span class="accent">vai além do seu veículo.</span>', 'Seguros que <span class="accent">vão além do seu veículo.</span>')
   .replace('Escolha sua proteção', 'Escolha seu seguro')
   .replace('Vamos proteger o que move você?', 'Vamos cuidar do que move você?')
+  .replace(/<a class="brand"[\s\S]*?<\/a>/, brandMarkup)
   .replace(/<div class="pills" id="tabs">[\s\S]*?<\/div>\s*<div class="carousel">/, '<div class="carousel">')
   .replace(/<span class="club-note">[\s\S]*?<\/span>/, '')
   .replace(/<div class="club-note">[\s\S]*?<\/div>/, '')
@@ -275,4 +281,5 @@ let cleaned = source
 
 fs.mkdirSync(path.join(__dirname, 'dist'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'dist', 'index.html'), cleaned, 'utf8');
+fs.copyFileSync(path.join(__dirname, 'logo-oficial-web.png'), path.join(__dirname, 'dist', 'logo-oficial-web.png'));
 
