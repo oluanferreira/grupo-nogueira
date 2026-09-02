@@ -19,8 +19,24 @@ const productionStyles = `
 .solution-card p{color:var(--muted);font-size:13.5px;line-height:1.65;margin-top:10px}
 .solution-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:18px}
 .solution-list span{font-size:11.5px;color:#dfe7f3;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:5px 8px}
+.solution-link{display:inline-flex;align-items:center;gap:7px;margin-top:18px;color:var(--orange-2);font-size:12px;font-weight:700;letter-spacing:.01em}
+.solution-link::after{content:"→";font-size:15px;transition:transform .2s}
+.solution-card:hover .solution-link::after{transform:translateX(3px)}
 @media(max-width:1080px){.solution-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.solution-card{min-height:220px}}
 @media(max-width:620px){.solutions{padding:72px 0 70px}.solutions-head{display:block}.solutions-intro{margin-top:18px}.solution-grid{grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}.solution-card{min-height:230px;padding:20px 16px}.solution-card h3{font-size:16px}.solution-card p{font-size:13px}.solution-list span{font-size:11px;padding:4px 7px}}
+
+/* Cotação — estrutura pronta para conectar aos canais oficiais */
+.quote{background:var(--navy);padding:0 0 96px}
+.quote-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.quote-copy h2{font-size:clamp(30px,3.6vw,44px);font-weight:800;line-height:1.15;letter-spacing:-.01em;margin-top:18px;max-width:520px}
+.quote-copy p{color:var(--muted);font-size:15.5px;line-height:1.8;margin-top:20px;max-width:450px}
+.quote-note{display:inline-flex;align-items:center;gap:8px;margin-top:24px;color:#dfe7f3;font-size:13px}
+.quote-note::before{content:"";width:8px;height:8px;background:var(--orange);border-radius:50%;box-shadow:0 0 12px rgba(249,115,22,.55)}
+.quote-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:28px;border-radius:20px;background:var(--card);border:1px solid var(--line);box-shadow:0 18px 42px rgba(0,0,0,.16)}
+.quote-field{display:flex;flex-direction:column;gap:8px}.quote-field.full{grid-column:1/-1}
+.quote-field label{font-size:12px;font-weight:700;color:#dfe7f3}.quote-field input,.quote-field select,.quote-field textarea{width:100%;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:rgba(255,255,255,.045);color:#fff;font:inherit;font-size:14px;padding:12px 13px;outline:none;transition:.2s}.quote-field textarea{min-height:108px;resize:vertical}.quote-field input::placeholder,.quote-field textarea::placeholder{color:#7f91ad}.quote-field input:focus,.quote-field select:focus,.quote-field textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(249,115,22,.12)}.quote-field select option{color:#0f172a}.quote-form .btn{grid-column:1/-1;justify-self:start;margin-top:4px}.quote-status{grid-column:1/-1;color:var(--muted);font-size:12.5px;line-height:1.55;min-height:20px}.quote-status[data-state="error"]{color:#fdba74}.quote-status[data-state="ready"]{color:#c5f6d5}
+@media(max-width:1080px){.quote-inner{grid-template-columns:1fr;gap:32px}.quote-copy p{max-width:650px}}
+@media(max-width:620px){.quote{padding-bottom:72px}.quote-form{grid-template-columns:1fr;padding:20px}.quote-field.full{grid-column:auto}.quote-form .btn,.quote-status{grid-column:auto;width:100%}}
 
 /* Clube de benefícios */
 .club-inner{grid-template-columns:330px minmax(0,1fr);gap:68px;align-items:center}
@@ -163,12 +179,33 @@ const solutionsMarkup = `
       <p class="solutions-intro">Do que move sua operação ao que sustenta sua vida, o Grupo Nogueira reúne orientação, seguro e assistência em um só lugar.</p>
     </div>
     <div class="solution-grid">
-      <article class="solution-card reveal"><span class="solution-index">01</span><h3>Mobilidade</h3><p>Seguro para veículos e rotinas que não podem parar.</p><div class="solution-list"><span>Auto</span><span>Moto</span><span>Pesados</span></div></article>
-      <article class="solution-card reveal"><span class="solution-index">02</span><h3>Patrimônio</h3><p>Segurança para sua casa, empresa e tudo que você construiu.</p><div class="solution-list"><span>Residencial</span><span>Empresarial</span></div></article>
-      <article class="solution-card reveal"><span class="solution-index">03</span><h3>Vida &amp; Saúde</h3><p>Cuidado contínuo para você, sua família e sua equipe.</p><div class="solution-list"><span>Vida</span><span>Saúde</span></div></article>
-      <article class="solution-card reveal"><span class="solution-index">04</span><h3>Projetos &amp; Futuro</h3><p>Planejamento para realizar seus próximos passos com tranquilidade.</p><div class="solution-list"><span>Consórcio</span><span>Viagem</span></div></article>
-      <article class="solution-card reveal"><span class="solution-index">05</span><h3>Seguros especializados</h3><p>Recursos adicionais para riscos específicos e novas necessidades.</p><div class="solution-list"><span>Pet</span><span>Celular</span><span>Vacina Antifurto</span></div></article>
+      <article class="solution-card reveal"><span class="solution-index">01</span><h3>Mobilidade</h3><p>Seguro para veículos e rotinas que não podem parar.</p><div class="solution-list"><span>Auto</span><span>Moto</span><span>Pesados</span></div><a class="solution-link" href="#contato" data-solution="Mobilidade">Cotar mobilidade</a></article>
+      <article class="solution-card reveal"><span class="solution-index">02</span><h3>Patrimônio</h3><p>Segurança para sua casa, empresa e tudo que você construiu.</p><div class="solution-list"><span>Residencial</span><span>Empresarial</span></div><a class="solution-link" href="#contato" data-solution="Patrimônio">Cotar patrimônio</a></article>
+      <article class="solution-card reveal"><span class="solution-index">03</span><h3>Vida &amp; Saúde</h3><p>Cuidado contínuo para você, sua família e sua equipe.</p><div class="solution-list"><span>Vida</span><span>Saúde</span></div><a class="solution-link" href="#contato" data-solution="Vida e Saúde">Cotar vida e saúde</a></article>
+      <article class="solution-card reveal"><span class="solution-index">04</span><h3>Projetos &amp; Futuro</h3><p>Planejamento para realizar seus próximos passos com tranquilidade.</p><div class="solution-list"><span>Consórcio</span><span>Viagem</span></div><a class="solution-link" href="#contato" data-solution="Projetos e Futuro">Cotar projeto</a></article>
+      <article class="solution-card reveal"><span class="solution-index">05</span><h3>Seguros especializados</h3><p>Recursos adicionais para riscos específicos e novas necessidades.</p><div class="solution-list"><span>Pet</span><span>Celular</span><span>Vacina Antifurto</span></div><a class="solution-link" href="#contato" data-solution="Seguros especializados">Cotar especialidade</a></article>
     </div>
+  </div>
+</section>`;
+
+const quoteMarkup = `
+<section class="quote" id="contato">
+  <div class="container quote-inner">
+    <div class="quote-copy reveal">
+      <span class="eyebrow">Fale com a equipe</span>
+      <h2>Vamos encontrar o seguro certo para o seu momento?</h2>
+      <p>Conte um pouco sobre o que você precisa. A equipe do Grupo Nogueira poderá orientar o próximo passo com clareza e agilidade.</p>
+      <span class="quote-note">Atendimento consultivo, do primeiro contato à contratação</span>
+    </div>
+    <form class="quote-form reveal" id="quoteForm" novalidate>
+      <div class="quote-field"><label for="quoteName">Nome</label><input id="quoteName" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required></div>
+      <div class="quote-field"><label for="quotePhone">Telefone</label><input id="quotePhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" required></div>
+      <div class="quote-field full"><label for="quoteEmail">E-mail</label><input id="quoteEmail" name="email" autocomplete="email" type="email" placeholder="voce@exemplo.com" required></div>
+      <div class="quote-field full"><label for="quoteSolution">O que você precisa?</label><select id="quoteSolution" name="solution" required><option value="" selected disabled>Selecione uma frente</option><option>Mobilidade</option><option>Patrimônio</option><option>Vida e Saúde</option><option>Projetos e Futuro</option><option>Seguros especializados</option></select></div>
+      <div class="quote-field full"><label for="quoteMessage">Mensagem (opcional)</label><textarea id="quoteMessage" name="message" placeholder="Se quiser, conte mais sobre o seu momento."></textarea></div>
+      <button class="btn btn-primary" type="submit">Enviar pedido de cotação</button>
+      <p class="quote-status" id="quoteStatus" role="status" aria-live="polite">Os canais oficiais de atendimento serão conectados assim que os dados institucionais forem confirmados.</p>
+    </form>
   </div>
 </section>`;
 
@@ -185,6 +222,27 @@ const autoplayScript = `
   const tick=(now)=>{const dt=Math.min((now-last)/1000,.05);last=now;if(!paused){track.scrollLeft+=speed*dt;const lp=track.scrollWidth/2;if(track.scrollLeft>=lp)track.scrollLeft-=lp;}requestAnimationFrame(tick)};
   const pause=()=>paused=true,play=()=>{paused=false;last=performance.now()};
   track.addEventListener('mouseenter',pause);track.addEventListener('mouseleave',play);track.addEventListener('focusin',pause);track.addEventListener('focusout',play);track.addEventListener('touchstart',pause,{passive:true});track.addEventListener('touchend',()=>setTimeout(play,900),{passive:true});document.addEventListener('visibilitychange',()=>document.hidden?pause():play());requestAnimationFrame(tick);
+})();
+</script>`;
+
+const quoteScript = `
+<script id="quote-form-behavior">
+(() => {
+  const form=document.getElementById('quoteForm');
+  const status=document.getElementById('quoteStatus');
+  if(!form||!status)return;
+  document.querySelectorAll('[data-solution]').forEach(link=>link.addEventListener('click',()=>{
+    const select=document.getElementById('quoteSolution');
+    if(select){select.value=link.dataset.solution;}
+  }));
+  form.addEventListener('submit',event=>{
+    event.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();status.dataset.state='error';status.textContent='Confira os campos obrigatórios para continuar.';return;}
+    const recipient=form.dataset.recipient;
+    if(!recipient){status.dataset.state='ready';status.textContent='Seu pedido está pronto. Assim que os canais oficiais forem confirmados, o envio será conectado ao atendimento do Grupo Nogueira.';return;}
+    const data=new FormData(form);const subject='Pedido de cotação — Grupo Nogueira';const body=['Nome: '+data.get('name'),'Telefone: '+data.get('phone'),'E-mail: '+data.get('email'),'Frente: '+data.get('solution'),'Mensagem: '+(data.get('message')||'-')].join('\\n');
+    window.location.href='mailto:'+encodeURIComponent(recipient)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  });
 })();
 </script>`;
 
@@ -210,8 +268,10 @@ let cleaned = source
   .replace(/<div class="club-note">[\s\S]*?<\/div>/, '')
   .replace(/<div class="hero-art reveal" aria-hidden="true">[\s\S]*?<\/svg>\s*<\/div>/, heroMarkup)
   .replace('<section class="club" id="beneficios">', solutionsMarkup + '\n<section class="club" id="beneficios">')
+  .replace('<section class="cta-wrap">', quoteMarkup + '\n<section class="cta-wrap">')
+  .replace('<footer id="contato">', '<footer id="rodape">')
   .replace('</head>', productionStyles + '\n</head>')
-  .replace('</body>', autoplayScript + '\n</body>');
+  .replace('</body>', autoplayScript + '\n' + quoteScript + '\n</body>');
 
 fs.mkdirSync(path.join(__dirname, 'dist'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'dist', 'index.html'), cleaned, 'utf8');
