@@ -350,6 +350,7 @@ let cleaned = source
   .replace('Proteção que <span class="accent">vai além do seu veículo.</span>', 'Seguros que <span class="accent">vão além do seu veículo.</span>')
   .replace('Escolha sua proteção', 'Escolha seu seguro')
   .replace('Vamos proteger o que move você?', 'Vamos cuidar do que move você?')
+  .replace('<li><a href="#inicio">Soluções em seguros <span>›</span></a></li>', '<li><a href="#produtos">Nossos produtos <span>›</span></a></li>')
   .replace(/<a class="brand"[\s\S]*?<\/a>/, brandMarkup)
   .replace('<li>◉ (77) 99999-9999</li><li>☎ (77) 3421-9999</li><li>✉ contato@gruponogueira.com.br</li><li>⌖ Vitória da Conquista - BA</li>', '<li><a href="https://wa.me/5532988842933" target="_blank" rel="noreferrer">◉ (32) 98884-2933</a></li><li>◷ Assistência 24h / 7 dias</li><li>⌖ Rio-Bahia, 8.740 km, 700 — Bairro Universitário, Muriaé/MG</li><li>CEP 36888-230 · Anexo ao Posto Bela Vista</li>')
   .replace('Horário de Atendimento', 'Disponibilidade de atendimento')
