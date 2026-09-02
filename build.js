@@ -23,7 +23,7 @@ const productionStyles = `
 .solution-link::after{content:"→";font-size:15px;transition:transform .2s}
 .solution-card:hover .solution-link::after{transform:translateX(3px)}
 @media(max-width:1080px){.solution-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.solution-card{min-height:220px}}
-@media(max-width:620px){.solutions{padding:72px 0 70px}.solutions-head{display:block}.solutions-intro{margin-top:18px}.solution-grid{grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}.solution-card{min-height:230px;padding:20px 16px}.solution-card h3{font-size:16px}.solution-card p{font-size:13px}.solution-list span{font-size:11px;padding:4px 7px}}
+@media(max-width:620px){.solutions{padding:72px 0 70px}.solutions-head{display:block}.solutions-intro{margin-top:18px}.solution-grid{grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}.solution-card{min-height:230px;padding:20px 16px}.solution-card h3{font-size:16px}.solution-card p{font-size:13px}.solution-list span{font-size:11px;padding:4px 7px}.club .track{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}.club .track::-webkit-scrollbar{display:none}.club .bcard{scroll-snap-align:start}}
 
 .brand-lockup{display:block;width:208px;height:auto;max-height:56px;object-fit:contain;object-position:left center}
 @media(max-width:620px){.brand-lockup{width:178px;max-height:46px}}
