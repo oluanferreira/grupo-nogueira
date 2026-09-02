@@ -129,6 +129,8 @@ const v2Styles = `
 .hero-v2 .hero-copy p{max-width:540px}
 .hero-v2-side{position:relative;display:grid;gap:18px;align-content:center;min-width:0}
 .hero-v2 .hero-quote{position:relative;z-index:4;align-self:center}
+.hero-v2 .quote-copy{grid-column:1/-1}
+.hero-v2 .quote-copy p{margin-top:12px;max-width:540px}
 .hero-v2 .quote-form{padding:28px;background:rgba(14,30,58,.92);backdrop-filter:blur(12px);box-shadow:0 26px 60px rgba(0,0,0,.22)}
 .hero-v2 .quote-form .btn{width:100%;justify-self:stretch}
 .hero-v2 .quote-status{font-size:12px}
