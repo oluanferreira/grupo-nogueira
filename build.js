@@ -40,6 +40,7 @@ const productionStyles = `
 .quote-field label{font-size:12px;font-weight:700;color:#dfe7f3}.quote-field input,.quote-field select,.quote-field textarea{width:100%;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:rgba(255,255,255,.045);color:#fff;font:inherit;font-size:14px;padding:12px 13px;outline:none;transition:.2s}.quote-field textarea{min-height:108px;resize:vertical}.quote-field input::placeholder,.quote-field textarea::placeholder{color:#7f91ad}.quote-field input:focus,.quote-field select:focus,.quote-field textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(249,115,22,.12)}.quote-field select option{color:#0f172a}.quote-form .btn{grid-column:1/-1;justify-self:start;margin-top:4px}.quote-status{grid-column:1/-1;color:var(--muted);font-size:12.5px;line-height:1.55;min-height:20px}.quote-status[data-state="error"]{color:#fdba74}.quote-status[data-state="ready"]{color:#c5f6d5}
 @media(max-width:1080px){.quote-inner{grid-template-columns:1fr;gap:32px}.quote-copy p{max-width:650px}}
 @media(max-width:620px){.quote{padding-bottom:72px}.quote-form{grid-template-columns:1fr;padding:20px}.quote-field.full{grid-column:auto}.quote-form .btn,.quote-status{grid-column:auto;width:100%}}
+.f-logo img{display:block;width:88px;height:auto;object-fit:contain}
 
 /* Clube de benefícios */
 .club-inner{grid-template-columns:330px minmax(0,1fr);gap:68px;align-items:center}
@@ -269,6 +270,13 @@ let cleaned = source
   .replace('Escolha sua proteção', 'Escolha seu seguro')
   .replace('Vamos proteger o que move você?', 'Vamos cuidar do que move você?')
   .replace(/<a class="brand"[\s\S]*?<\/a>/, brandMarkup)
+  .replace('<li>◉ (77) 99999-9999</li><li>☎ (77) 3421-9999</li><li>✉ contato@gruponogueira.com.br</li><li>⌖ Vitória da Conquista - BA</li>', '<li><a href="https://wa.me/5532988842933" target="_blank" rel="noreferrer">◉ (32) 98884-2933</a></li><li>◷ Assistência 24h / 7 dias</li><li>⌖ Rio-Bahia, 8.740 km, 700 — Bairro Universitário, Muriaé/MG</li><li>CEP 36888-230 · Anexo ao Posto Bela Vista</li>')
+  .replace('Horário de Atendimento', 'Disponibilidade de atendimento')
+  .replace('<p>Segunda a Sexta: 08h às 18h</p><p>Sábado: 08h às 12h</p>', '<p>Assistência 24h por dia, 7 dias por semana</p><p>Atendimento local via WhatsApp</p>')
+  .replace('<a href="#" aria-label="Instagram">', '<a href="https://www.instagram.com/grupo.nnogueira/" target="_blank" rel="noreferrer" aria-label="Instagram">')
+  .replace('<a href="#" aria-label="WhatsApp">', '<a href="https://wa.me/5532988842933" target="_blank" rel="noreferrer" aria-label="WhatsApp">')
+  .replace(/<a href="#" aria-label="Facebook">[\s\S]*?<\/a>/, '')
+  .replace(/<div class="f-logo"><svg[\s\S]*?<\/svg><\/div>/, '<div class="f-logo"><img src="/escudo-oficial-web.png" alt="Símbolo Grupo Nogueira" loading="lazy"></div>')
   .replace(/<div class="pills" id="tabs">[\s\S]*?<\/div>\s*<div class="carousel">/, '<div class="carousel">')
   .replace(/<span class="club-note">[\s\S]*?<\/span>/, '')
   .replace(/<div class="club-note">[\s\S]*?<\/div>/, '')
@@ -282,4 +290,5 @@ let cleaned = source
 fs.mkdirSync(path.join(__dirname, 'dist'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'dist', 'index.html'), cleaned, 'utf8');
 fs.copyFileSync(path.join(__dirname, 'logo-oficial-web.png'), path.join(__dirname, 'dist', 'logo-oficial-web.png'));
+fs.copyFileSync(path.join(__dirname, 'escudo-oficial-web.png'), path.join(__dirname, 'dist', 'escudo-oficial-web.png'));
 
