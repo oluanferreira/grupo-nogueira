@@ -43,7 +43,7 @@ if (!svgRegex.test(html)) {
 }
 html = html.replace(
   svgRegex,
-  '<img class="truck-real" src="/truck-real.webp" alt="Carreta protegida pelo Grupo Nogueira" decoding="async" fetchpriority="high"><img class="truck-protection-pass" src="/truck-real.webp" alt="" aria-hidden="true" decoding="async">'
+  '<img class="truck-real" src="/truck-real.webp" alt="Carreta assegurada pelo Grupo Nogueira" decoding="async" fetchpriority="high"><img class="truck-protection-pass" src="/truck-real.webp" alt="" aria-hidden="true" decoding="async">'
 );
 
 const realTruckStyles = `

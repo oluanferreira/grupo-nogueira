@@ -15,6 +15,8 @@ const refine = `
   linear-gradient(90deg,rgba(3,13,26,.97) 0%,rgba(5,17,33,.82) 34%,rgba(5,18,35,.18) 58%,rgba(5,18,35,.02) 100%),
   radial-gradient(circle at 78% 36%,rgba(255,255,255,.045) 0 1px,transparent 1.5px)!important;background-size:auto,26px 26px!important}
 .hero-inner{grid-template-columns:.88fr 1.34fr!important;gap:8px!important;padding:38px 0 50px!important}
+.hero-v2 .hero-inner{grid-template-columns:1.02fr .98fr!important;gap:42px!important;padding:54px 0 66px!important}
+.hero-v2 .hero-copy{padding-right:0!important}
 .hero-copy{padding-right:18px!important}
 .hero h1{font-size:clamp(43px,4.8vw,64px)!important;max-width:600px!important}
 .hero-copy p{max-width:500px!important;color:#b8c5d5!important}
@@ -39,12 +41,15 @@ const refine = `
 
 @media(max-width:1080px){
   .hero-inner{padding:54px 0 34px!important}
+  .hero-v2 .hero-inner{grid-template-columns:1fr!important;gap:30px!important;padding:54px 0 34px!important}
+  .hero-v2-side{max-width:700px!important;width:100%!important}
   .truck-hero{margin:8px -11vw -24px -4vw!important;min-height:490px!important;justify-content:center!important}
   .truck-stage{width:790px!important;max-width:102vw!important;height:485px!important;transform:translateY(6px)!important}
   .protection-shell{left:8%!important;top:8%!important;width:86%!important;height:78%!important}
 }
 @media(max-width:620px){
   .hero-inner{display:grid!important;grid-template-columns:1fr!important;align-items:start!important;min-height:auto!important;gap:0!important;padding:26px 0 28px!important}
+  .hero-v2 .hero-inner{gap:22px!important;padding:26px 0 34px!important}
   .hero-copy{padding-right:0!important;width:100%!important;max-width:none!important}
   .hero h1{font-size:clamp(34px,10.2vw,42px)!important;line-height:1.04!important;letter-spacing:-.03em!important;margin-top:0!important;max-width:100%!important}
   .hero-copy p{font-size:15px!important;line-height:1.65!important;margin-top:20px!important;max-width:100%!important}
