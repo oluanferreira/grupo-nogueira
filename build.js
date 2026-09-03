@@ -228,7 +228,7 @@ const heroV2Markup = `
         <div class="hero-ecosystem-labels"><span class="hero-ecosystem-label">Mobilidade</span><span class="hero-ecosystem-label">Patrimônio</span><span class="hero-ecosystem-label">Vida &amp; Saúde</span><span class="hero-ecosystem-label">Projetos &amp; Futuro</span><span class="hero-ecosystem-label">Soluções especiais</span></div>
       </div>
       <div class="hero-quote" id="contato">
-        <form class="quote-form" id="quoteForm" novalidate>
+        <form class="quote-form" id="quoteForm" data-whatsapp="5532988842933" novalidate>
           <div class="quote-copy"><span class="eyebrow">Comece sua cotação</span><h2>Encontre o seguro certo para o seu momento.</h2><p>Preencha seus dados e conte o que você precisa. A equipe do Grupo Nogueira orienta o próximo passo.</p></div>
           <div class="quote-field"><label for="quoteName">Nome</label><input id="quoteName" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required></div>
           <div class="quote-field"><label for="quotePhone">Telefone</label><input id="quotePhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" required></div>
@@ -327,10 +327,13 @@ const quoteScript = `
   form.addEventListener('submit',event=>{
     event.preventDefault();
     if(!form.checkValidity()){form.reportValidity();status.dataset.state='error';status.textContent='Confira os campos obrigatórios para continuar.';return;}
-    const recipient=form.dataset.recipient;
-    if(!recipient){status.dataset.state='ready';status.textContent='Seu pedido está pronto. Assim que os canais oficiais forem confirmados, o envio será conectado ao atendimento do Grupo Nogueira.';return;}
-    const data=new FormData(form);const subject='Pedido de cotação — Grupo Nogueira';const body=['Nome: '+data.get('name'),'Telefone: '+data.get('phone'),'E-mail: '+data.get('email'),'Frente: '+data.get('solution'),'Mensagem: '+(data.get('message')||'-')].join('\\n');
-    window.location.href='mailto:'+encodeURIComponent(recipient)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    const whatsapp=form.dataset.whatsapp;
+    if(!whatsapp){status.dataset.state='ready';status.textContent='Seu pedido está pronto. O atendimento oficial será conectado assim que o canal for confirmado.';return;}
+    const data=new FormData(form);const body=['Olá, quero uma cotação com o Grupo Nogueira.','Nome: '+data.get('name'),'Telefone: '+data.get('phone'),'E-mail: '+data.get('email'),'Frente: '+data.get('solution'),'Mensagem: '+(data.get('message')||'-')].join('\\n');
+    const url='https://wa.me/'+whatsapp+'?text='+encodeURIComponent(body);
+    status.dataset.state='ready';status.textContent='Abrindo o WhatsApp com os dados da sua cotação.';
+    const popup=window.open(url,'_blank','noopener,noreferrer');
+    if(!popup)window.location.href=url;
   });
 })();
 </script>`;
