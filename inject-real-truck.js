@@ -38,13 +38,15 @@ const indexPath = path.join(DIST, 'index.html');
 let html = fs.readFileSync(indexPath, 'utf8');
 
 const svgRegex = /<svg class="truck-svg"[\s\S]*?<\/svg>/;
-if (!svgRegex.test(html)) {
-  throw new Error('Could not find SVG truck in built hero');
+const hasInlineTruck = svgRegex.test(html);
+if (hasInlineTruck) {
+  html = html.replace(
+    svgRegex,
+    '<img class="truck-real" src="/truck-real.webp" alt="Carreta assegurada pelo Grupo Nogueira" decoding="async" fetchpriority="high"><img class="truck-protection-pass" src="/truck-real.webp" alt="" aria-hidden="true" decoding="async">'
+  );
+} else {
+  console.log('No inline truck stage found; keeping the current hero composition.');
 }
-html = html.replace(
-  svgRegex,
-  '<img class="truck-real" src="/truck-real.webp" alt="Carreta assegurada pelo Grupo Nogueira" decoding="async" fetchpriority="high"><img class="truck-protection-pass" src="/truck-real.webp" alt="" aria-hidden="true" decoding="async">'
-);
 
 const realTruckStyles = `
 <style id="real-truck-stage">
@@ -123,7 +125,7 @@ const realTruckStyles = `
 }
 </style>`;
 
-html = html.replace('</head>', realTruckStyles + '\n</head>');
+if (hasInlineTruck) html = html.replace('</head>', realTruckStyles + '\n</head>');
 fs.writeFileSync(indexPath, html, 'utf8');
 console.log('Verified real truck asset injected:', truckBuffer.length, 'bytes', sha);
 

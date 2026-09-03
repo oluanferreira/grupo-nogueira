@@ -184,6 +184,7 @@ const v2Styles = `
  .product-stage .product-card[hidden]{display:none!important}
  .product-stage .product-media{height:auto;min-height:438px;border:0;border-radius:0;background:#0a1628}
  .product-stage .product-media::after{opacity:.72}
+ .product-stage .mobility-media::after{display:none}
  .product-stage .product-card-body{display:flex;flex-direction:column;justify-content:center;padding:42px 38px 38px;background:linear-gradient(180deg,rgba(13,35,57,.18),rgba(7,20,35,.34))}
  .product-card-kicker{display:block;color:#F59A5D;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
  .product-stage .product-card h3{margin-top:16px;font-size:clamp(30px,3.4vw,46px);line-height:1.03;letter-spacing:-.03em;color:#F3EFE7}
@@ -365,7 +366,7 @@ const productsMarkup = `
     <div class="product-showcase">
       <div class="product-stage">
         <article class="product-card product-card-mobility is-active reveal" id="product-card-mobility" role="tabpanel" aria-labelledby="product-tab-mobility" data-product-panel="mobilidade">
-          <div class="product-media auto-media"><div class="product-glow"></div><svg class="truck-svg" viewBox="0 0 980 620" aria-hidden="true"></svg><img class="auto-vehicle auto-vehicle-car" src="/auto-car.webp" alt="Carro para seguro auto" loading="lazy"><img class="auto-vehicle auto-vehicle-pass auto-vehicle-pass-car" src="/auto-car.webp" alt="" aria-hidden="true" loading="lazy"><img class="auto-vehicle auto-vehicle-moto" src="/auto-moto.webp" alt="Moto para seguro de moto" loading="lazy"><img class="auto-vehicle auto-vehicle-pass auto-vehicle-pass-moto" src="/auto-moto.webp" alt="" aria-hidden="true" loading="lazy"><div class="auto-vehicle-badges"><span>Auto</span><span>Moto</span><span>Pesados</span></div></div>
+          <div class="product-media mobility-media"><img class="product-photo" src="/product-mobility-sm.webp" alt="Carro, moto e caminhão em uma composição de mobilidade" loading="eager" fetchpriority="high"></div>
           <div class="product-card-body"><span class="product-card-kicker">01 · Mobilidade</span><h3>Mobilidade</h3><p>Seguro para os veículos e as rotinas que não podem parar.</p><div class="product-list"><span>Auto</span><span>Moto</span><span>Caminhões</span></div><a class="btn product-quote" href="https://wa.me/5532988842933" target="_blank" rel="noreferrer" data-product="Mobilidade">Fazer cotação <span aria-hidden="true">→</span></a></div>
         </article>
         <article class="product-card product-card-property reveal" id="product-card-property" role="tabpanel" aria-labelledby="product-tab-property" data-product-panel="patrimonio" hidden>
@@ -635,5 +636,5 @@ fs.mkdirSync(path.join(__dirname, 'dist'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'dist', 'index.html'), cleaned, 'utf8');
 fs.copyFileSync(path.join(__dirname, 'logo-oficial-web.png'), path.join(__dirname, 'dist', 'logo-oficial-web.png'));
 fs.copyFileSync(path.join(__dirname, 'escudo-oficial-web.png'), path.join(__dirname, 'dist', 'escudo-oficial-web.png'));
-['auto-moto.webp','auto-car.webp','product-property-sm.webp','product-life-sm.webp','product-future-sm.webp','product-special-sm.webp','product-vaccine-sm.webp'].forEach(file => fs.copyFileSync(path.join(__dirname, file), path.join(__dirname, 'dist', file)));
+['auto-moto.webp','auto-car.webp','product-mobility-sm.webp','product-property-sm.webp','product-life-sm.webp','product-future-sm.webp','product-special-sm.webp','product-vaccine-sm.webp'].forEach(file => fs.copyFileSync(path.join(__dirname, file), path.join(__dirname, 'dist', file)));
 
