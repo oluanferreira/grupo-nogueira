@@ -134,6 +134,19 @@ const v2Styles = `
 .hero-v2 .quote-form{padding:28px;background:rgba(14,30,58,.92);backdrop-filter:blur(12px);box-shadow:0 26px 60px rgba(0,0,0,.22)}
 .hero-v2 .quote-form .btn{width:100%;justify-self:stretch}
 .hero-v2 .quote-status{font-size:12px}
+.hero-v2-side{display:block;min-height:620px}
+.hero-v2 .hero-quote{max-width:540px;margin-left:auto;padding-top:42px}
+.hero-v2-side .hero-ecosystem{position:absolute;z-index:1;top:-26px;right:-20px;width:560px;min-height:360px;opacity:.82;pointer-events:none}
+.hero-v2 .hero-quote{z-index:4}
+.hero-v2 .quote-flow{display:block;padding:24px;border-radius:22px;background:rgba(14,30,58,.94);border:1px solid rgba(255,255,255,.14);box-shadow:0 26px 60px rgba(0,0,0,.28);backdrop-filter:blur(14px)}
+.quote-flow-head{display:flex;align-items:center;gap:12px}.quote-flow-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:linear-gradient(145deg,var(--orange-2),var(--orange-3));color:#fff;font-family:'Plus Jakarta Sans';font-size:17px;font-weight:800;box-shadow:0 8px 18px rgba(249,115,22,.22)}.quote-flow-head .eyebrow{display:block}.quote-flow-meta{display:block;margin-top:4px;color:#93a4bd;font-size:11px}
+.quote-flow-title{margin-top:22px}.quote-flow-title h2{font-size:clamp(25px,2.6vw,34px);line-height:1.1;letter-spacing:-.025em}.quote-flow-title p{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.55}
+.quote-progress{display:flex;align-items:center;gap:10px;margin-top:20px;color:#8799b2;font-size:11px;font-weight:700}.quote-progress-line{height:1px;flex:1;background:rgba(255,255,255,.13);order:2}.quote-progress-step{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;order:1}.quote-progress-step:last-child{order:3}.quote-progress-step.active{color:#fff}.quote-progress-step.active::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px rgba(249,115,22,.6)}.quote-progress-step:not(.active)::before{content:"";width:7px;height:7px;border:1px solid #61738d;border-radius:50%}.quote-progress-step small{font-size:10px;font-weight:600;color:inherit;opacity:.9}
+.quote-step{margin-top:18px}.quote-product-choice{display:grid;grid-template-columns:1fr 1fr;gap:9px;border:0;margin:0;padding:0}.quote-product-option{display:flex;align-items:center;gap:10px;min-height:63px;padding:11px 12px;border:1px solid rgba(255,255,255,.13);border-radius:13px;background:rgba(255,255,255,.035);color:#fff;text-align:left;font:inherit;cursor:pointer;transition:.2s}.quote-product-option:hover{border-color:rgba(249,115,22,.7);background:rgba(249,115,22,.08);transform:translateY(-2px)}.quote-product-option.selected{border-color:var(--orange);background:rgba(249,115,22,.14);box-shadow:0 0 0 2px rgba(249,115,22,.12)}.quote-option-mark{display:grid;place-items:center;width:25px;height:25px;flex:none;border-radius:8px;background:rgba(255,255,255,.08);color:#a9bad0;font-size:9px;font-weight:800;letter-spacing:.04em}.quote-product-option.selected .quote-option-mark{background:var(--orange);color:#fff}.quote-product-option strong{display:block;font-size:12px;line-height:1.2}.quote-product-option small{display:block;margin-top:4px;color:#91a3bb;font-size:10px;line-height:1.2}.quote-option-arrow{margin-left:auto;color:#8295ae;font-size:16px;transition:.2s}.quote-product-option:hover .quote-option-arrow,.quote-product-option.selected .quote-option-arrow{color:var(--orange-2);transform:translateX(2px)}.quote-next{margin-top:14px;min-height:48px}.quote-next:disabled{opacity:.42;cursor:not-allowed;transform:none!important;box-shadow:none}
+.quote-contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quote-flow .quote-field{gap:6px}.quote-flow .quote-field label{font-size:11px;color:#dfe7f3}.quote-flow .quote-field label span{color:#7f91ad;font-weight:500}.quote-flow .quote-field input{padding:12px;border-radius:11px;background:rgba(255,255,255,.055);font-size:13px}.quote-field-email{margin-top:10px}.quote-summary{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px;padding:11px 13px;border:1px solid rgba(249,115,22,.32);border-radius:12px;background:rgba(249,115,22,.07)}.quote-summary small{display:block;color:#98a9be;font-size:10px}.quote-summary strong{display:block;margin-top:3px;color:#fff;font-size:13px}.quote-change{border:0;background:transparent;color:var(--orange-2);font:inherit;font-size:11px;font-weight:700;cursor:pointer}.quote-actions{display:grid;grid-template-columns:.72fr 1.28fr;gap:9px;margin-top:16px}.quote-actions .btn{width:100%;min-height:47px}.quote-status{margin-top:13px!important;min-height:18px!important;font-size:11px!important}.quote-status[data-state="ready"]{color:#c5f6d5}.quote-status[data-state="error"]{color:#fdba74}
+@media(max-width:1080px){.hero-v2-side{display:grid;gap:18px;min-height:auto}.hero-v2 .hero-quote{max-width:700px;padding-top:0}.hero-v2-side .hero-ecosystem{position:relative;top:auto;right:auto;width:auto;min-height:250px;opacity:1;order:-1}}
+@media(max-width:620px){.hero-v2 .quote-flow{padding:20px}.quote-flow-title{margin-top:18px}.quote-flow-title h2{font-size:25px}.quote-product-choice{grid-template-columns:1fr;gap:8px}.quote-product-option{min-height:58px}.quote-contact-grid{grid-template-columns:1fr}.quote-actions{grid-template-columns:1fr 1.5fr}.hero-v2-side .hero-ecosystem{min-height:200px}.hero-v2 .hero-quote{padding-top:0}}
+@media(max-width:390px){.quote-actions{grid-template-columns:1fr}.quote-actions .quote-back{order:2}.quote-actions .btn-primary{order:1}}
 .hero-v2 .hero-quote::before{content:"";position:absolute;inset:-18px -18px 18px 18px;border:1px solid rgba(249,115,22,.20);border-radius:24px;transform:rotate(-2deg);pointer-events:none}
 .hero-v2 .hero-quote::after{content:"";position:absolute;right:-32px;bottom:-24px;width:150px;height:80px;background:linear-gradient(168deg,transparent 43%,rgba(249,115,22,.62) 44%,rgba(255,210,164,.86) 45%,transparent 48%);opacity:.55;pointer-events:none}
 .hero-ecosystem{position:relative;min-height:430px;display:grid;place-items:center;isolation:isolate}
@@ -228,15 +241,29 @@ const heroV2Markup = `
         <div class="hero-ecosystem-labels"><span class="hero-ecosystem-label">Mobilidade</span><span class="hero-ecosystem-label">Patrimônio</span><span class="hero-ecosystem-label">Vida &amp; Saúde</span><span class="hero-ecosystem-label">Projetos &amp; Futuro</span><span class="hero-ecosystem-label">Soluções especiais</span></div>
       </div>
       <div class="hero-quote" id="contato">
-        <form class="quote-form" id="quoteForm" data-whatsapp="5532988842933" novalidate>
-          <div class="quote-copy"><span class="eyebrow">Comece sua cotação</span><h2>Encontre o seguro certo para o seu momento.</h2><p>Preencha seus dados e conte o que você precisa. A equipe do Grupo Nogueira orienta o próximo passo.</p></div>
-          <div class="quote-field"><label for="quoteName">Nome</label><input id="quoteName" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required></div>
-          <div class="quote-field"><label for="quotePhone">Telefone</label><input id="quotePhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" required></div>
-          <div class="quote-field full"><label for="quoteEmail">E-mail</label><input id="quoteEmail" name="email" autocomplete="email" type="email" placeholder="voce@exemplo.com" required></div>
-          <div class="quote-field full"><label for="quoteSolution">O que você precisa?</label><select id="quoteSolution" name="solution" required><option value="" selected disabled>Selecione uma frente</option><option>Mobilidade</option><option>Patrimônio</option><option>Vida e Saúde</option><option>Projetos e Futuro</option><option>Pet e Dispositivos</option><option>Vacina Antifurto</option></select></div>
-          <div class="quote-field full"><label for="quoteMessage">Mensagem (opcional)</label><textarea id="quoteMessage" name="message" placeholder="Se quiser, conte mais sobre o seu momento."></textarea></div>
-          <button class="btn btn-primary" type="submit">Enviar pedido de cotação</button>
-          <p class="quote-status" id="quoteStatus" role="status" aria-live="polite">Os canais oficiais de atendimento serão conectados assim que os dados institucionais forem confirmados.</p>
+        <form class="quote-form quote-flow" id="quoteForm" data-whatsapp="5532988842933" novalidate>
+          <div class="quote-flow-head"><span class="quote-flow-icon" aria-hidden="true">N</span><div><span class="eyebrow">Comece sua cotação</span><span class="quote-flow-meta">Rápido, claro e direto no WhatsApp</span></div></div>
+          <div class="quote-flow-title"><h2 id="quoteStepTitle">Qual seguro você busca?</h2><p id="quoteStepIntro">Escolha uma frente para começar.</p></div>
+          <div class="quote-progress" role="progressbar" aria-valuemin="1" aria-valuemax="2" aria-valuenow="1" aria-label="Etapa 1 de 2"><span class="quote-progress-line"></span><span class="quote-progress-step active">1 <small>Escolha</small></span><span class="quote-progress-step">2 <small>Contato</small></span></div>
+          <div class="quote-step quote-step-product is-active" data-step="1">
+            <fieldset class="quote-product-choice"><legend class="sr-only">Escolha uma frente</legend>
+              <button class="quote-product-option" type="button" data-solution="Mobilidade"><span class="quote-option-mark">01</span><span><strong>Mobilidade</strong><small>Auto, moto e pesados</small></span><span class="quote-option-arrow" aria-hidden="true">→</span></button>
+              <button class="quote-product-option" type="button" data-solution="Patrimônio"><span class="quote-option-mark">02</span><span><strong>Patrimônio</strong><small>Residencial e empresarial</small></span><span class="quote-option-arrow" aria-hidden="true">→</span></button>
+              <button class="quote-product-option" type="button" data-solution="Vida e Saúde"><span class="quote-option-mark">03</span><span><strong>Vida &amp; Saúde</strong><small>Você, família e equipe</small></span><span class="quote-option-arrow" aria-hidden="true">→</span></button>
+              <button class="quote-product-option" type="button" data-solution="Projetos e Futuro"><span class="quote-option-mark">04</span><span><strong>Projetos &amp; Futuro</strong><small>Consórcio e viagem</small></span><span class="quote-option-arrow" aria-hidden="true">→</span></button>
+              <button class="quote-product-option" type="button" data-solution="Pet e Dispositivos"><span class="quote-option-mark">05</span><span><strong>Pet &amp; Dispositivos</strong><small>Pet e celular</small></span><span class="quote-option-arrow" aria-hidden="true">→</span></button>
+              <button class="quote-product-option quote-product-option-special" type="button" data-solution="Vacina Antifurto"><span class="quote-option-mark">06</span><span><strong>Vacina Antifurto</strong><small>Codificação a laser</small></span><span class="quote-option-arrow" aria-hidden="true">→</span></button>
+            </fieldset>
+            <button class="btn btn-primary quote-next" type="button" disabled>Continuar</button>
+          </div>
+          <div class="quote-step quote-step-contact" data-step="2" hidden>
+            <input id="quoteSolution" name="solution" type="hidden" required>
+            <div class="quote-summary"><span><small>Frente escolhida</small><strong id="quoteSummary">—</strong></span><button class="quote-change" type="button">Trocar</button></div>
+            <div class="quote-contact-grid"><div class="quote-field"><label for="quoteName">Seu nome</label><input id="quoteName" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required></div><div class="quote-field"><label for="quotePhone">WhatsApp</label><input id="quotePhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" required></div></div>
+            <div class="quote-field quote-field-email"><label for="quoteEmail">E-mail <span>(opcional)</span></label><input id="quoteEmail" name="email" autocomplete="email" type="email" placeholder="voce@exemplo.com"></div>
+            <div class="quote-actions"><button class="btn btn-ghost quote-back" type="button">Voltar</button><button class="btn btn-primary" type="submit">Abrir WhatsApp</button></div>
+          </div>
+          <p class="quote-status" id="quoteStatus" role="status" aria-live="polite">Escolha uma frente acima para começar.</p>
         </form>
       </div>
     </div>
@@ -320,9 +347,51 @@ const quoteScript = `
   const form=document.getElementById('quoteForm');
   const status=document.getElementById('quoteStatus');
   if(!form||!status)return;
-  document.querySelectorAll('[data-solution]').forEach(link=>link.addEventListener('click',()=>{
-    const select=document.getElementById('quoteSolution');
-    if(select){select.value=link.dataset.solution;}
+  const productStep=form.querySelector('[data-step="1"]');
+  const contactStep=form.querySelector('[data-step="2"]');
+  const options=[...form.querySelectorAll('.quote-product-option')];
+  const next=form.querySelector('.quote-next');
+  const back=form.querySelector('.quote-back');
+  const change=form.querySelector('.quote-change');
+  const hiddenSolution=document.getElementById('quoteSolution');
+  const summary=document.getElementById('quoteSummary');
+  const title=document.getElementById('quoteStepTitle');
+  const intro=document.getElementById('quoteStepIntro');
+  const progress=form.querySelector('.quote-progress');
+  const progressSteps=[...form.querySelectorAll('.quote-progress-step')];
+  const phone=document.getElementById('quotePhone');
+  let selectedSolution='';
+  const setStep=(step)=>{
+    const first=step===1;
+    if(productStep)productStep.hidden=!first;
+    if(contactStep)contactStep.hidden=first;
+    if(title)title.textContent=first?'Qual seguro você busca?':'Quase lá. Como falamos com você?';
+    if(intro)intro.textContent=first?'Escolha uma frente para começar.':'Deixe seus dados e receba o próximo passo no WhatsApp.';
+    progressSteps.forEach((item,index)=>item.classList.toggle('active',first?index===0:index<=1));
+    if(progress){progress.setAttribute('aria-valuenow',first?'1':'2');progress.setAttribute('aria-label','Etapa '+(first?'1':'2')+' de 2');}
+    if(!first){const name=document.getElementById('quoteName');if(name)name.focus();}
+  };
+  const choose=(solution)=>{
+    selectedSolution=solution;
+    if(hiddenSolution)hiddenSolution.value=solution;
+    if(summary)summary.textContent=solution;
+    options.forEach(option=>option.classList.toggle('selected',option.dataset.solution===solution));
+    if(next)next.disabled=false;
+    status.textContent='Clique em continuar para preencher seus dados.';
+    status.dataset.state='';
+  };
+  options.forEach(option=>option.addEventListener('click',()=>choose(option.dataset.solution)));
+  if(next)next.addEventListener('click',()=>{if(selectedSolution)setStep(2);});
+  if(back)back.addEventListener('click',()=>setStep(1));
+  if(change)change.addEventListener('click',()=>setStep(1));
+  if(phone)phone.addEventListener('input',()=>{
+    const digits=phone.value.replace(/\\D/g,'').slice(0,11);
+    if(digits.length<=10)phone.value=digits.replace(/(\\d{2})(\\d{4})(\\d{0,4})/,'($1) $2-$3').replace(/-$/,'');
+    else phone.value=digits.replace(/(\\d{2})(\\d{5})(\\d{0,4})/,'($1) $2-$3').replace(/-$/,'');
+  });
+  document.querySelectorAll('a[data-solution]').forEach(link=>link.addEventListener('click',()=>{
+    choose(link.dataset.solution);
+    setStep(2);
   }));
   form.addEventListener('submit',event=>{
     event.preventDefault();
