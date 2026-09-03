@@ -27,9 +27,9 @@ const refine = `
 .truck-svg{filter:drop-shadow(0 34px 36px rgba(0,0,0,.48)) drop-shadow(0 0 1px rgba(255,255,255,.12))!important}
 .truck-glow{left:11%!important;right:0!important;bottom:5%!important;height:118px!important;background:radial-gradient(ellipse,rgba(249,115,22,.22),rgba(30,76,135,.13) 44%,transparent 72%)!important;filter:blur(25px)!important}
 
-.hero::after{inset:auto -18% 1.5% 32%!important;height:165px!important;background:
+.hero::after{inset:auto -14% 1.5% -10%!important;height:165px!important;background:
   linear-gradient(174deg,transparent 43%,rgba(249,115,22,.05) 44%,rgba(249,115,22,.65) 45%,rgba(255,202,148,.82) 45.6%,rgba(249,115,22,.19) 47%,transparent 49%),
-  linear-gradient(178deg,transparent 54%,rgba(249,115,22,.38) 55%,rgba(249,115,22,.08) 56%,transparent 57%)!important;opacity:.82!important}
+  linear-gradient(178deg,transparent 54%,rgba(249,115,22,.38) 55%,rgba(249,115,22,.08) 56%,transparent 57%)!important;opacity:.82!important;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%)!important;mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%)!important}
 
 .protection-shell{left:7%!important;top:8%!important;width:88%!important;height:78%!important;border:1px solid rgba(249,115,22,.22)!important;box-shadow:0 0 20px rgba(249,115,22,.08),inset 0 0 26px rgba(249,115,22,.045)!important;opacity:.48!important;transform:rotate(-2deg)!important}
 .protection-shell::before{background-size:42px 26px!important;opacity:.22!important}
@@ -59,7 +59,7 @@ const refine = `
   .truck-stage{position:relative!important;width:100%!important;max-width:100%!important;height:250px!important;transform:none!important}
   .protection-shell{left:11%!important;top:10%!important;width:80%!important;height:73%!important;opacity:.38!important}
   .protection-sweep{width:16%!important;animation-duration:7.2s!important}
-  .hero::after{inset:auto -14% 0 8%!important;height:74px!important;opacity:.5!important}
+  .hero::after{inset:auto -14% 0 -10%!important;height:74px!important;opacity:.5!important}
 }
 @media(max-width:390px){
   .hero-inner{padding-top:22px!important}
@@ -72,3 +72,4 @@ const refine = `
 
 html = html.replace('</head>', refine + '\n</head>');
 fs.writeFileSync(file, html, 'utf8');
+
