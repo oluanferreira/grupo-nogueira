@@ -107,7 +107,7 @@ const realTruckStyles = `
   .truck-real{filter:drop-shadow(0 20px 22px rgba(0,0,0,.40)) drop-shadow(0 0 10px rgba(68,119,190,.05))}
   .truck-protection-pass{animation-duration:7s;-webkit-mask-size:300% 100%;mask-size:300% 100%}
   .truck-glow{left:16%!important;right:16%!important;bottom:2%!important;height:52px!important;filter:blur(16px)!important}
-  .hero::after{inset:auto -14% 0 8%!important;height:74px!important;opacity:.5!important}
+  .hero::after{inset:auto -14% 0 -10%!important;height:74px!important;opacity:.5!important}
 }
 
 @media(max-width:390px){
@@ -126,3 +126,4 @@ const realTruckStyles = `
 html = html.replace('</head>', realTruckStyles + '\n</head>');
 fs.writeFileSync(indexPath, html, 'utf8');
 console.log('Verified real truck asset injected:', truckBuffer.length, 'bytes', sha);
+

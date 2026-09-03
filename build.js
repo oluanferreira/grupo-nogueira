@@ -174,6 +174,82 @@ const v2Styles = `
  .quote-card-submit{position:relative;z-index:1;width:100%;min-height:42px;margin-top:13px;border-radius:999px;padding:10px 16px;font-size:12px;background:#E86F2C;box-shadow:0 10px 22px rgba(232,111,44,.24)}.quote-card-submit:hover{background:#D15F21}.quote-card-submit span{font-size:15px;line-height:1;transition:transform .2s}.quote-card-submit:hover span{transform:translateX(3px)}.quote-card .quote-status{position:relative;z-index:1;margin:8px 0 0!important;min-height:0!important;color:#BFD4E1;font-size:9.5px!important;line-height:1.35;text-align:center}.quote-card .quote-status[data-state="error"]{color:#FDBA74}.quote-card .quote-status[data-state="ready"]{color:#C5F6D5}
  @media(max-width:1080px){.hero-v2-side{display:grid;align-content:initial;justify-content:initial;gap:18px;min-height:auto}.hero-v2-side::before{display:none}.hero-v2 .hero-quote{max-width:420px;padding-top:0}.hero-v2 .quote-card{max-width:390px}}
  @media(max-width:620px){.hero-v2 .quote-card{padding:18px 16px 15px;border-radius:18px}.quote-card-fields{grid-template-columns:1fr;gap:9px;margin-top:16px}.quote-card-field-full{grid-column:auto}.quote-card-submit{margin-top:12px}.hero-v2 .hero-quote{width:100%}}
+
+ /* Product showcase — painel amplo, escolha guiada e CTA por frente */
+ .products .product-grid{display:none}
+ .product-showcase{display:grid;grid-template-columns:minmax(0,4fr) minmax(190px,1fr);gap:16px;margin-top:40px;align-items:stretch;position:relative;z-index:1}
+ .product-stage{min-width:0;min-height:438px}
+ .product-stage .product-card{display:none!important;grid-template-columns:minmax(0,1.16fr) minmax(260px,.84fr);min-height:438px;margin:0;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:linear-gradient(145deg,#122b45 0%,#0e2238 52%,#0a1a2d 100%);box-shadow:0 24px 50px rgba(0,0,0,.22);overflow:hidden}
+ .product-stage .product-card.is-active{display:grid!important;animation:productFocusIn .42s cubic-bezier(.2,.75,.2,1) both}
+ .product-stage .product-card[hidden]{display:none!important}
+ .product-stage .product-media{height:auto;min-height:438px;border:0;border-radius:0;background:#0a1628}
+ .product-stage .product-media::after{opacity:.72}
+ .product-stage .product-card-body{display:flex;flex-direction:column;justify-content:center;padding:42px 38px 38px;background:linear-gradient(180deg,rgba(13,35,57,.18),rgba(7,20,35,.34))}
+ .product-card-kicker{display:block;color:#F59A5D;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+ .product-stage .product-card h3{margin-top:16px;font-size:clamp(30px,3.4vw,46px);line-height:1.03;letter-spacing:-.03em;color:#F3EFE7}
+ .product-stage .product-card p{margin-top:15px;max-width:360px;color:#B9C9D3;font-size:15px;line-height:1.7}
+ .product-stage .product-list{margin-top:26px;padding-top:0}
+ .product-stage .product-list span{font-size:11px;color:#D7E3EA;border-color:rgba(243,239,231,.18);background:rgba(255,255,255,.045);padding:6px 9px}
+ .product-quote{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;gap:8px;margin-top:32px;min-height:46px;padding:12px 18px;border-radius:999px;background:#E86F2C;color:#fff;font-size:12px;font-weight:800;box-shadow:0 11px 24px rgba(232,111,44,.24)}
+ .product-quote:hover{background:#D15F21;transform:translateY(-2px)}
+ .product-quote span{font-size:16px;line-height:1;transition:transform .2s}
+ .product-quote:hover span{transform:translateX(3px)}
+ .product-picker{display:grid;align-content:start;gap:7px;padding:12px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(10,25,44,.62);box-shadow:0 18px 38px rgba(0,0,0,.14)}
+ .product-picker-eyebrow{display:block;padding:5px 8px 8px;color:#8FA6B8;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+ .product-picker-option{display:grid;grid-template-columns:27px minmax(0,1fr) 16px;align-items:center;gap:9px;width:100%;min-height:59px;padding:9px 9px;border:1px solid transparent;border-radius:12px;background:transparent;color:#fff;text-align:left;font:inherit;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+ .product-picker-option:hover{border-color:rgba(232,111,44,.45);background:rgba(232,111,44,.07);transform:translateX(2px)}
+ .product-picker-option.is-active{border-color:rgba(232,111,44,.72);background:linear-gradient(100deg,rgba(232,111,44,.18),rgba(53,106,136,.12));box-shadow:inset 3px 0 0 #E86F2C}
+ .product-picker-option:focus-visible{outline:2px solid #F6B17B;outline-offset:2px}
+ .product-picker-index{display:grid;place-items:center;width:25px;height:25px;border-radius:8px;background:rgba(255,255,255,.07);color:#A9BBC8;font-size:10px;font-weight:800}
+ .product-picker-option.is-active .product-picker-index{background:#E86F2C;color:#fff}
+ .product-picker-option strong{display:block;font-size:12px;line-height:1.2}
+ .product-picker-option small{display:block;margin-top:4px;color:#8FA6B8;font-size:10px;line-height:1.2}
+ .product-picker-arrow{color:#718CA0;font-size:15px;transition:color .2s,transform .2s}
+ .product-picker-option:hover .product-picker-arrow,.product-picker-option.is-active .product-picker-arrow{color:#F59A5D;transform:translateX(2px)}
+ .product-picker-option-vaccine{margin-top:4px;border-top:1px solid rgba(255,255,255,.10);border-radius:0 0 12px 12px}
+ .product-picker-option-vaccine .product-picker-index{background:rgba(232,111,44,.12);color:#F59A5D}
+ .product-stage .auto-media::after{display:none}
+ .product-stage .auto-media .truck-real,.product-stage .auto-media .truck-protection-pass{width:94%;left:3%;object-fit:contain;object-position:center 58%}
+ .product-stage .auto-media .auto-vehicle-car,.product-stage .auto-media .auto-vehicle-pass-car{width:53%;right:-4%;bottom:8%}
+ .product-stage .auto-media .auto-vehicle-moto,.product-stage .auto-media .auto-vehicle-pass-moto{width:34%;left:2%;bottom:3%}
+ .product-stage .auto-media .auto-vehicle-car,.product-stage .auto-media .auto-vehicle-moto{filter:saturate(.78) contrast(1.06) brightness(.96) drop-shadow(0 13px 13px rgba(0,0,0,.38))}
+ .auto-vehicle-pass{position:absolute;z-index:4;object-fit:contain;pointer-events:none;opacity:0;mix-blend-mode:screen;filter:sepia(1) saturate(7) hue-rotate(338deg) brightness(1.22) contrast(1.03);-webkit-mask-image:linear-gradient(96deg,transparent 0 37%,rgba(0,0,0,.16) 42%,rgba(0,0,0,.9) 48%,#000 50%,rgba(0,0,0,.72) 53%,rgba(0,0,0,.12) 59%,transparent 64% 100%);mask-image:linear-gradient(96deg,transparent 0 37%,rgba(0,0,0,.16) 42%,rgba(0,0,0,.9) 48%,#000 50%,rgba(0,0,0,.72) 53%,rgba(0,0,0,.12) 59%,transparent 64% 100%);-webkit-mask-size:285% 100%;mask-size:285% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:145% 0;mask-position:145% 0;animation:autoVehiclePixelSweep 6.4s cubic-bezier(.45,.02,.2,1) infinite}
+ @keyframes autoVehiclePixelSweep{0%,12%{-webkit-mask-position:145% 0;mask-position:145% 0;opacity:0}17%{opacity:.16}24%{opacity:.48}52%{opacity:.62}68%{opacity:.38}77%{-webkit-mask-position:-55% 0;mask-position:-55% 0;opacity:.08}82%,100%{-webkit-mask-position:-55% 0;mask-position:-55% 0;opacity:0}}
+ .product-card-vaccine{border-color:rgba(232,111,44,.30)!important}
+ @keyframes productFocusIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+ @media(max-width:1080px){
+   .product-showcase{grid-template-columns:1fr;gap:14px}
+   .product-stage{min-height:420px}
+   .product-stage .product-card{min-height:420px;grid-template-columns:minmax(0,1.08fr) minmax(250px,.92fr)}
+   .product-stage .product-media{min-height:420px}
+   .product-picker{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+   .product-picker-eyebrow{grid-column:1/-1}
+   .product-picker-option-vaccine{margin-top:0;border-top:0;border-left:1px solid rgba(255,255,255,.10);border-radius:12px}
+ }
+ @media(max-width:620px){
+   .products{padding:72px 0 76px}
+   .products-head{display:block}
+   .products-intro{margin-top:18px}
+   .product-showcase{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+   .product-stage{min-height:0}
+   .product-stage .product-card{grid-template-columns:1fr;min-height:0;border-radius:18px}
+   .product-stage .product-media{height:232px;min-height:232px}
+   .product-stage .product-card-body{padding:25px 22px 24px}
+   .product-stage .product-card h3{font-size:32px}
+   .product-stage .product-card p{font-size:14px;line-height:1.6}
+   .product-stage .product-list{margin-top:20px}
+   .product-quote{width:100%;align-self:stretch;margin-top:25px}
+   .product-picker{order:2;display:flex;overflow-x:auto;gap:8px;padding:8px;scroll-snap-type:x mandatory;scrollbar-width:none}
+   .product-picker::-webkit-scrollbar{display:none}
+   .product-picker-eyebrow{display:none}
+   .product-picker-option{flex:0 0 168px;min-height:70px;scroll-snap-align:start}
+   .product-picker-option-vaccine{border-top:0;border-left:0}
+   .product-stage .auto-media .truck-real,.product-stage .auto-media .truck-protection-pass{object-position:center 58%}
+   .product-stage .auto-media .auto-vehicle-car,.product-stage .auto-media .auto-vehicle-pass-car{width:54%;right:-8%;bottom:7%}
+   .product-stage .auto-media .auto-vehicle-moto,.product-stage .auto-media .auto-vehicle-pass-moto{width:36%;left:0;bottom:2%}
+ }
+ @media(max-width:390px){.product-picker-option{flex-basis:154px}.product-stage .product-media{height:220px;min-height:220px}.product-stage .product-card h3{font-size:30px}}
+ @media(prefers-reduced-motion:reduce){.product-stage .product-card{animation:none}.auto-vehicle-pass{animation:none;opacity:.10}}
 </style>`;
 
 const heroMarkup = `
@@ -261,13 +337,34 @@ const productsMarkup = `
 <section class="products" id="produtos">
   <div class="container">
     <div class="products-head reveal"><div><span class="eyebrow">Nossos produtos</span><h2>Um ecossistema completo para cada fase da sua vida.</h2></div><p class="products-intro">Conheça as frentes do Grupo Nogueira e encontre a combinação de seguros que faz sentido para o seu momento.</p></div>
-    <div class="product-grid">
-      <article class="product-card product-card-mobility reveal"><div class="product-media auto-media"><div class="product-glow"></div><svg class="truck-svg" viewBox="0 0 980 620" aria-hidden="true"></svg><img class="auto-vehicle auto-vehicle-car" src="/auto-car.webp" alt="Carro para seguro auto" loading="lazy"><img class="auto-vehicle auto-vehicle-moto" src="/auto-moto.webp" alt="Moto para seguro de moto" loading="lazy"><div class="auto-vehicle-badges"><span>Auto</span><span>Moto</span><span>Pesados</span></div></div><div class="product-card-body"><h3>Mobilidade</h3><p>Seguro para os veículos e as rotinas que não podem parar.</p><div class="product-list"><span>Auto</span><span>Moto</span><span>Caminhões</span></div><a class="product-link" href="#contato" data-solution="Mobilidade">Cotar mobilidade</a></div></article>
-      <article class="product-card reveal"><div class="product-media"><img class="product-photo" src="/product-property-sm.webp" alt="Casa contemporânea ao anoitecer" loading="lazy"></div><div class="product-card-body"><h3>Patrimônio</h3><p>Seguro para sua casa, empresa e tudo que você construiu.</p><div class="product-list"><span>Residencial</span><span>Empresarial</span></div><a class="product-link" href="#contato" data-solution="Patrimônio">Cotar patrimônio</a></div></article>
-      <article class="product-card reveal"><div class="product-media"><img class="product-photo" src="/product-life-sm.webp" alt="Família em atendimento consultivo" loading="lazy"></div><div class="product-card-body"><h3>Vida &amp; Saúde</h3><p>Cuidado contínuo para você, sua família e sua equipe.</p><div class="product-list"><span>Vida</span><span>Saúde</span></div><a class="product-link" href="#contato" data-solution="Vida e Saúde">Cotar vida e saúde</a></div></article>
-      <article class="product-card reveal"><div class="product-media"><img class="product-photo" src="/product-future-sm.webp" alt="Mala, chaves e caderno de planejamento" loading="lazy"></div><div class="product-card-body"><h3>Projetos &amp; Futuro</h3><p>Planejamento para realizar seus próximos passos com tranquilidade.</p><div class="product-list"><span>Consórcio</span><span>Viagem</span></div><a class="product-link" href="#contato" data-solution="Projetos e Futuro">Cotar projeto</a></div></article>
-      <article class="product-card reveal"><div class="product-media"><img class="product-photo" src="/product-special-sm.webp" alt="Cão ao lado de um smartphone" loading="lazy"></div><div class="product-card-body"><h3>Pet &amp; Dispositivos</h3><p>Seguros para os companheiros e tecnologias presentes na sua rotina.</p><div class="product-list"><span>Pet</span><span>Celular</span></div><a class="product-link" href="#contato" data-solution="Pet e Dispositivos">Cotar solução</a></div></article>
-      <article class="product-card product-card-vaccine reveal"><div class="product-media"><img class="product-photo" src="/product-vaccine-sm.webp" alt="Codificação a laser em peça metálica de caminhão" loading="lazy"></div><div class="product-card-body"><h3>Vacina Antifurto</h3><p>Codificação a laser de peças de caminhão para dificultar o comércio irregular.</p><div class="product-list"><span>Laser</span><span>Pesados</span><span>Rastreabilidade</span></div><a class="product-link" href="#contato" data-solution="Vacina Antifurto">Conhecer a solução</a></div></article>
+    <div class="product-showcase">
+      <div class="product-stage">
+        <article class="product-card product-card-mobility is-active reveal" id="product-card-mobility" role="tabpanel" aria-labelledby="product-tab-mobility" data-product-panel="mobilidade">
+          <div class="product-media auto-media"><div class="product-glow"></div><svg class="truck-svg" viewBox="0 0 980 620" aria-hidden="true"></svg><img class="auto-vehicle auto-vehicle-car" src="/auto-car.webp" alt="Carro para seguro auto" loading="lazy"><img class="auto-vehicle auto-vehicle-pass auto-vehicle-pass-car" src="/auto-car.webp" alt="" aria-hidden="true" loading="lazy"><img class="auto-vehicle auto-vehicle-moto" src="/auto-moto.webp" alt="Moto para seguro de moto" loading="lazy"><img class="auto-vehicle auto-vehicle-pass auto-vehicle-pass-moto" src="/auto-moto.webp" alt="" aria-hidden="true" loading="lazy"><div class="auto-vehicle-badges"><span>Auto</span><span>Moto</span><span>Pesados</span></div></div>
+          <div class="product-card-body"><span class="product-card-kicker">01 · Mobilidade</span><h3>Mobilidade</h3><p>Seguro para os veículos e as rotinas que não podem parar.</p><div class="product-list"><span>Auto</span><span>Moto</span><span>Caminhões</span></div><a class="btn product-quote" href="https://wa.me/5532988842933" target="_blank" rel="noreferrer" data-product="Mobilidade">Fazer cotação <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="product-card product-card-property reveal" id="product-card-property" role="tabpanel" aria-labelledby="product-tab-property" data-product-panel="patrimonio" hidden>
+          <div class="product-media"><img class="product-photo" src="/product-property-sm.webp" alt="Casa contemporânea ao anoitecer" loading="lazy"></div>
+          <div class="product-card-body"><span class="product-card-kicker">02 · Patrimônio</span><h3>Patrimônio</h3><p>Seguro para sua casa, empresa e tudo que você construiu.</p><div class="product-list"><span>Residencial</span><span>Empresarial</span></div><a class="btn product-quote" href="https://wa.me/5532988842933" target="_blank" rel="noreferrer" data-product="Patrimônio">Fazer cotação <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="product-card product-card-life reveal" id="product-card-life" role="tabpanel" aria-labelledby="product-tab-life" data-product-panel="vida" hidden>
+          <div class="product-media"><img class="product-photo" src="/product-life-sm.webp" alt="Família em atendimento consultivo" loading="lazy"></div>
+          <div class="product-card-body"><span class="product-card-kicker">03 · Vida &amp; Saúde</span><h3>Vida &amp; Saúde</h3><p>Cuidado contínuo para você, sua família e sua equipe.</p><div class="product-list"><span>Vida</span><span>Saúde</span></div><a class="btn product-quote" href="https://wa.me/5532988842933" target="_blank" rel="noreferrer" data-product="Vida e Saúde">Fazer cotação <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="product-card product-card-future reveal" id="product-card-future" role="tabpanel" aria-labelledby="product-tab-future" data-product-panel="futuro" hidden>
+          <div class="product-media"><img class="product-photo" src="/product-future-sm.webp" alt="Mala, chaves e caderno de planejamento" loading="lazy"></div>
+          <div class="product-card-body"><span class="product-card-kicker">04 · Projetos &amp; Futuro</span><h3>Projetos &amp; Futuro</h3><p>Planejamento para realizar seus próximos passos com tranquilidade.</p><div class="product-list"><span>Consórcio</span><span>Viagem</span></div><a class="btn product-quote" href="https://wa.me/5532988842933" target="_blank" rel="noreferrer" data-product="Projetos e Futuro">Fazer cotação <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="product-card product-card-special reveal" id="product-card-special" role="tabpanel" aria-labelledby="product-tab-special" data-product-panel="especial" hidden>
+          <div class="product-media"><img class="product-photo" src="/product-special-sm.webp" alt="Cão ao lado de um smartphone" loading="lazy"></div>
+          <div class="product-card-body"><span class="product-card-kicker">05 · Pet &amp; Dispositivos</span><h3>Pet &amp; Dispositivos</h3><p>Seguros para os companheiros e tecnologias presentes na sua rotina.</p><div class="product-list"><span>Pet</span><span>Celular</span></div><a class="btn product-quote" href="https://wa.me/5532988842933" target="_blank" rel="noreferrer" data-product="Pet e Dispositivos">Fazer cotação <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="product-card product-card-vaccine reveal" id="product-card-vaccine" role="tabpanel" aria-labelledby="product-tab-vaccine" data-product-panel="antifurto" hidden>
+          <div class="product-media"><img class="product-photo" src="/product-vaccine-sm.webp" alt="Codificação a laser em peça metálica de caminhão" loading="lazy"></div>
+          <div class="product-card-body"><span class="product-card-kicker">Solução especializada · 06</span><h3>Vacina Antifurto</h3><p>Codificação a laser de peças de caminhão para dificultar o comércio irregular.</p><div class="product-list"><span>Laser</span><span>Pesados</span><span>Rastreabilidade</span></div><a class="btn product-quote" href="https://wa.me/5532988842933" target="_blank" rel="noreferrer" data-product="Vacina Antifurto">Fazer cotação <span aria-hidden="true">→</span></a></div>
+        </article>
+      </div>
+      <div class="product-picker" role="tablist" aria-label="Escolha uma frente de seguro"><span class="product-picker-eyebrow">Escolha uma frente</span><button class="product-picker-option is-active" id="product-tab-mobility" type="button" role="tab" aria-selected="true" aria-controls="product-card-mobility" data-product-target="mobilidade"><span class="product-picker-index">01</span><span><strong>Mobilidade</strong><small>Auto, moto e pesados</small></span><span class="product-picker-arrow" aria-hidden="true">→</span></button><button class="product-picker-option" id="product-tab-property" type="button" role="tab" aria-selected="false" aria-controls="product-card-property" data-product-target="patrimonio"><span class="product-picker-index">02</span><span><strong>Patrimônio</strong><small>Casa e empresa</small></span><span class="product-picker-arrow" aria-hidden="true">→</span></button><button class="product-picker-option" id="product-tab-life" type="button" role="tab" aria-selected="false" aria-controls="product-card-life" data-product-target="vida"><span class="product-picker-index">03</span><span><strong>Vida &amp; Saúde</strong><small>Família e equipe</small></span><span class="product-picker-arrow" aria-hidden="true">→</span></button><button class="product-picker-option" id="product-tab-future" type="button" role="tab" aria-selected="false" aria-controls="product-card-future" data-product-target="futuro"><span class="product-picker-index">04</span><span><strong>Projetos &amp; Futuro</strong><small>Consórcio e viagem</small></span><span class="product-picker-arrow" aria-hidden="true">→</span></button><button class="product-picker-option" id="product-tab-special" type="button" role="tab" aria-selected="false" aria-controls="product-card-special" data-product-target="especial"><span class="product-picker-index">05</span><span><strong>Pet &amp; Dispositivos</strong><small>Rotina e tecnologia</small></span><span class="product-picker-arrow" aria-hidden="true">→</span></button><button class="product-picker-option product-picker-option-vaccine" id="product-tab-vaccine" type="button" role="tab" aria-selected="false" aria-controls="product-card-vaccine" data-product-target="antifurto"><span class="product-picker-index">06</span><span><strong>Vacina Antifurto</strong><small>Solução especializada</small></span><span class="product-picker-arrow" aria-hidden="true">→</span></button></div>
     </div>
   </div>
 </section>`;
@@ -325,6 +422,70 @@ const autoplayScript = `
   const tick=(now)=>{const dt=Math.min((now-last)/1000,.05);last=now;if(!paused){track.scrollLeft+=speed*dt;const lp=track.scrollWidth/2;if(track.scrollLeft>=lp)track.scrollLeft-=lp;}requestAnimationFrame(tick)};
   const pause=()=>paused=true,play=()=>{paused=false;last=performance.now()};
   track.addEventListener('mouseenter',pause);track.addEventListener('mouseleave',play);track.addEventListener('focusin',pause);track.addEventListener('focusout',play);track.addEventListener('touchstart',pause,{passive:true});track.addEventListener('touchend',()=>setTimeout(play,900),{passive:true});document.addEventListener('visibilitychange',()=>document.hidden?pause():play());requestAnimationFrame(tick);
+})();
+</script>`;
+
+const productsScript = `
+<script id="products-behavior">
+(() => {
+  const root=document.getElementById('produtos');
+  if(!root||root.dataset.productsReady==='1')return;
+  root.dataset.productsReady='1';
+  const tabs=[...root.querySelectorAll('[data-product-target]')];
+  const panels=[...root.querySelectorAll('[data-product-panel]')];
+  const messages={
+    'Mobilidade':'Olá! Quero fazer uma cotação de seguro para mobilidade (auto, moto e caminhões) com o Grupo Nogueira.',
+    'Patrimônio':'Olá! Quero fazer uma cotação de seguro residencial ou empresarial com o Grupo Nogueira.',
+    'Vida e Saúde':'Olá! Quero fazer uma cotação de seguro de vida ou plano de saúde com o Grupo Nogueira.',
+    'Projetos e Futuro':'Olá! Quero fazer uma cotação de consórcio ou seguro viagem com o Grupo Nogueira.',
+    'Pet e Dispositivos':'Olá! Quero fazer uma cotação para meu pet ou celular com o Grupo Nogueira.',
+    'Vacina Antifurto':'Olá! Quero conhecer a solução Vacina Antifurto para codificação a laser de peças de caminhão.'
+  };
+  const setActive=(id,moveFocus)=>{
+    tabs.forEach(tab=>{
+      const active=tab.dataset.productTarget===id;
+      tab.classList.toggle('is-active',active);
+      tab.setAttribute('aria-selected',String(active));
+      tab.tabIndex=active?0:-1;
+      if(active&&!moveFocus&&window.matchMedia('(max-width:620px)').matches){
+        const picker=tab.closest('.product-picker');
+        if(picker)picker.scrollTo({left:Math.max(0,tab.offsetLeft-(picker.clientWidth-tab.offsetWidth)/2),behavior:'smooth'});
+      }
+    });
+    panels.forEach(panel=>{
+      const active=panel.dataset.productPanel===id;
+      panel.hidden=!active;
+      panel.classList.toggle('is-active',active);
+      panel.setAttribute('aria-hidden',String(!active));
+    });
+    if(moveFocus){
+      const tab=tabs.find(item=>item.dataset.productTarget===id);
+      if(tab)tab.focus();
+    }
+  };
+  tabs.forEach((tab,index)=>{
+    tab.tabIndex=tab.getAttribute('aria-selected')==='true'?0:-1;
+    tab.addEventListener('click',()=>setActive(tab.dataset.productTarget,false));
+    tab.addEventListener('keydown',event=>{
+      if(!['ArrowRight','ArrowDown','ArrowLeft','ArrowUp','Home','End'].includes(event.key))return;
+      event.preventDefault();
+      let next=index;
+      if(event.key==='ArrowRight'||event.key==='ArrowDown')next=(index+1)%tabs.length;
+      if(event.key==='ArrowLeft'||event.key==='ArrowUp')next=(index-1+tabs.length)%tabs.length;
+      if(event.key==='Home')next=0;
+      if(event.key==='End')next=tabs.length-1;
+      setActive(tabs[next].dataset.productTarget,true);
+    });
+  });
+  root.querySelectorAll('.product-quote').forEach(button=>button.addEventListener('click',event=>{
+    event.preventDefault();
+    const product=button.dataset.product||'';
+    const message=messages[product]||('Olá! Quero fazer uma cotação de '+product+' com o Grupo Nogueira.');
+    const url='https://wa.me/5532988842933?text='+encodeURIComponent(message);
+    const popup=window.open(url,'_blank','noopener,noreferrer');
+    if(!popup)window.location.href=url;
+  }));
+  setActive('mobilidade',false);
 })();
 </script>`;
 
@@ -404,7 +565,7 @@ let cleaned = source
   .replace('<section class="club" id="beneficios">', productsMarkup + '\n<section class="club" id="beneficios">')
   .replace('<footer id="contato">', '<footer id="rodape">')
   .replace('</head>', productionStyles + '\n' + v2Styles + '\n</head>')
-  .replace('</body>', autoplayScript + '\n' + quoteScript + '\n</body>');
+  .replace('</body>', autoplayScript + '\n' + productsScript + '\n' + quoteScript + '\n</body>');
 
 fs.mkdirSync(path.join(__dirname, 'dist'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'dist', 'index.html'), cleaned, 'utf8');
