@@ -369,6 +369,7 @@ const quoteScript = `
     if(intro)intro.textContent=first?'Escolha uma frente para começar.':'Deixe seus dados e receba o próximo passo no WhatsApp.';
     progressSteps.forEach((item,index)=>item.classList.toggle('active',first?index===0:index<=1));
     if(progress){progress.setAttribute('aria-valuenow',first?'1':'2');progress.setAttribute('aria-label','Etapa '+(first?'1':'2')+' de 2');}
+    if(status)status.textContent=first?'Escolha uma frente acima para começar.':'Preencha seus dados para abrir o WhatsApp.';
     if(!first){const name=document.getElementById('quoteName');if(name)name.focus();}
   };
   const choose=(solution)=>{
