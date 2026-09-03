@@ -250,6 +250,31 @@ const v2Styles = `
  }
  @media(max-width:390px){.product-picker-option{flex-basis:154px}.product-stage .product-media{height:220px;min-height:220px}.product-stage .product-card h3{font-size:30px}}
  @media(prefers-reduced-motion:reduce){.product-stage .product-card{animation:none}.auto-vehicle-pass{animation:none;opacity:.10}}
+
+ /* Product selector — navegação na base do palco */
+ .product-showcase{grid-template-columns:1fr;gap:14px}
+ .product-picker{grid-template-columns:repeat(6,minmax(0,1fr));align-items:stretch;gap:7px;padding:10px;margin:0}
+ .product-picker-eyebrow{grid-column:1/-1;padding:4px 8px 5px}
+ .product-picker-option{position:relative;min-height:68px;padding:9px 10px;overflow:hidden}
+ .product-picker-option.is-active{box-shadow:inset 0 -2px 0 #E86F2C}
+ .product-picker-option.is-active::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:rgba(245,154,93,.92);transform-origin:left center;animation:productTabProgress 6.8s linear both}
+ .product-picker:hover .product-picker-option.is-active::after,.product-picker:focus-within .product-picker-option.is-active::after{animation-play-state:paused}
+ .product-picker-option-vaccine{margin-top:0;border-top:0;border-left:1px solid rgba(255,255,255,.10);border-radius:12px}
+ @keyframes productTabProgress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+ @media(max-width:1080px){
+   .product-picker{grid-template-columns:repeat(3,minmax(0,1fr))}
+   .product-picker-eyebrow{grid-column:1/-1}
+ }
+ @media(max-width:620px){
+   .product-picker{display:flex;overflow-x:auto;gap:8px;padding:8px;scroll-snap-type:x mandatory;scrollbar-width:none}
+   .product-picker::-webkit-scrollbar{display:none}
+   .product-picker-eyebrow{display:none}
+   .product-picker-option{flex:0 0 168px;min-height:70px;scroll-snap-align:start}
+   .product-picker-option-vaccine{border-top:0;border-left:0}
+   .product-picker:hover .product-picker-option.is-active::after{animation-play-state:running}
+ }
+ @media(max-width:390px){.product-picker-option{flex-basis:154px}}
+ @media(prefers-reduced-motion:reduce){.product-picker-option.is-active::after{animation:none;transform:scaleX(1)}}
 </style>`;
 
 const heroMarkup = `
@@ -441,6 +466,14 @@ const productsScript = `
     'Pet e Dispositivos':'Olá! Quero fazer uma cotação para meu pet ou celular com o Grupo Nogueira.',
     'Vacina Antifurto':'Olá! Quero conhecer a solução Vacina Antifurto para codificação a laser de peças de caminhão.'
   };
+  const picker=root.querySelector('.product-picker');
+  const autoplayDelay=6800;
+  const canHover=window.matchMedia('(hover:hover)').matches&&window.innerWidth>620;
+  let autoplayTimer=null;
+  let autoplayPaused=false;
+  const stopAutoplay=()=>{
+    if(autoplayTimer){clearTimeout(autoplayTimer);autoplayTimer=null;}
+  };
   const setActive=(id,moveFocus)=>{
     tabs.forEach(tab=>{
       const active=tab.dataset.productTarget===id;
@@ -463,9 +496,27 @@ const productsScript = `
       if(tab)tab.focus();
     }
   };
+  const startAutoplay=()=>{
+    stopAutoplay();
+    if(autoplayPaused||tabs.length<2||document.hidden)return;
+    autoplayTimer=setTimeout(()=>{
+      const current=tabs.findIndex(tab=>tab.getAttribute('aria-selected')==='true');
+      const next=tabs[(current+1+tabs.length)%tabs.length];
+      if(next)setActive(next.dataset.productTarget,false);
+      startAutoplay();
+    },autoplayDelay);
+  };
   tabs.forEach((tab,index)=>{
     tab.tabIndex=tab.getAttribute('aria-selected')==='true'?0:-1;
-    tab.addEventListener('click',()=>setActive(tab.dataset.productTarget,false));
+    tab.addEventListener('click',()=>{
+      setActive(tab.dataset.productTarget,false);
+      if(!canHover)startAutoplay();
+    });
+    if(canHover)tab.addEventListener('mouseenter',()=>{
+      autoplayPaused=true;
+      stopAutoplay();
+      setActive(tab.dataset.productTarget,false);
+    });
     tab.addEventListener('keydown',event=>{
       if(!['ArrowRight','ArrowDown','ArrowLeft','ArrowUp','Home','End'].includes(event.key))return;
       event.preventDefault();
@@ -475,8 +526,20 @@ const productsScript = `
       if(event.key==='Home')next=0;
       if(event.key==='End')next=tabs.length-1;
       setActive(tabs[next].dataset.productTarget,true);
+      startAutoplay();
     });
   });
+  if(picker&&canHover){
+    picker.addEventListener('mouseenter',()=>{
+      autoplayPaused=true;
+      stopAutoplay();
+    });
+    picker.addEventListener('mouseleave',()=>{
+      autoplayPaused=false;
+      startAutoplay();
+    });
+  }
+  document.addEventListener('visibilitychange',()=>document.hidden?stopAutoplay():startAutoplay());
   root.querySelectorAll('.product-quote').forEach(button=>button.addEventListener('click',event=>{
     event.preventDefault();
     const product=button.dataset.product||'';
@@ -486,6 +549,7 @@ const productsScript = `
     if(!popup)window.location.href=url;
   }));
   setActive('mobilidade',false);
+  startAutoplay();
 })();
 </script>`;
 
